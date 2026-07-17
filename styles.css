@@ -519,12 +519,14 @@ html.morph-boss::view-transition-group(enemy-reveal-0) { animation-duration:1.25
 .fog-back { z-index:1;bottom:31%;height:19%;animation:fogCreepBack 24s -11s ease-in-out infinite alternate; }
 .fog-middle { z-index:3;bottom:18%;height:27%;opacity:.4;filter:blur(24px);animation:fogCreepMiddle 19s -7s ease-in-out infinite alternate; }
 .fog-front { z-index:5;bottom:1%;height:34%;opacity:.5;filter:blur(28px);animation:fogCreepFront 16s -9s ease-in-out infinite alternate; }
-.forest-edge { display:none; }
+.forest-edge { z-index:4;inset:0;background:linear-gradient(180deg,rgba(4,6,9,.58) 0%,rgba(5,7,9,.12) 30%,rgba(5,6,9,.22) 56%,rgba(4,5,8,.9) 100%),linear-gradient(90deg,rgba(6,7,10,.6),transparent 35%,transparent 70%,rgba(6,7,10,.38)),var(--scene) center/cover no-repeat;transform:scale(1.012);transform-origin:center; }
+.edge-left { clip-path:polygon(0 0,25% 0,26% 15%,25% 31%,24% 45%,27% 60%,32% 74%,35% 100%,0 100%); }
+.edge-right { clip-path:polygon(75% 0,100% 0,100% 100%,67% 100%,70% 74%,73% 60%,76% 45%,75% 31%,74% 15%); }
 .wolf-shadow { z-index:2;bottom:25%;width:clamp(135px,15vw,230px);height:38vh;opacity:0;filter:blur(.45px) drop-shadow(0 13px 20px rgba(0,0,0,.9));will-change:transform,opacity; }
 .wolf-shadow img { width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:grayscale(1) brightness(.18) saturate(.3) contrast(1.35) drop-shadow(0 0 7px rgba(135,174,156,.2));-webkit-mask-image:linear-gradient(to bottom,#000 0 66%,rgba(0,0,0,.78) 78%,transparent 98%);mask-image:linear-gradient(to bottom,#000 0 66%,rgba(0,0,0,.78) 78%,transparent 98%);transform-origin:50% 70%;animation:wolfTension 2.3s ease-in-out infinite alternate; }
-.wolf-left { left:4vw;-webkit-mask-image:linear-gradient(90deg,transparent 0 44%,rgba(0,0,0,.2) 54%,#000 70%);mask-image:linear-gradient(90deg,transparent 0 44%,rgba(0,0,0,.2) 54%,#000 70%);animation:wolfPeerLeft 18s -2s ease-in-out infinite; }
+.wolf-left { left:15vw;-webkit-mask-image:linear-gradient(90deg,transparent 0 22%,rgba(0,0,0,.35) 34%,#000 52%);mask-image:linear-gradient(90deg,transparent 0 22%,rgba(0,0,0,.35) 34%,#000 52%);animation:wolfPeerLeft 18s -2s ease-in-out infinite; }
 .wolf-left img { --wolf-facing:-1; }
-.wolf-right { right:4vw;bottom:30%;width:clamp(115px,13vw,205px);-webkit-mask-image:linear-gradient(270deg,transparent 0 44%,rgba(0,0,0,.2) 54%,#000 70%);mask-image:linear-gradient(270deg,transparent 0 44%,rgba(0,0,0,.2) 54%,#000 70%);animation:wolfPeerRight 21s -11s ease-in-out infinite; }
+.wolf-right { right:15vw;bottom:30%;width:clamp(115px,13vw,205px);-webkit-mask-image:linear-gradient(270deg,transparent 0 22%,rgba(0,0,0,.35) 34%,#000 52%);mask-image:linear-gradient(270deg,transparent 0 22%,rgba(0,0,0,.35) 34%,#000 52%);animation:wolfPeerRight 21s -11s ease-in-out infinite; }
 .wolf-right img { --wolf-facing:1; }
 @keyframes fogCreepBack { from{transform:translate3d(-3%,1%,0) scaleX(.97);background-position:0 0,48% 0,96% 0;opacity:.22} to{transform:translate3d(3%,-1%,0) scaleX(1.025);background-position:5% 1%,53% -1%,100% 2%;opacity:.34} }
 @keyframes fogCreepMiddle { from{transform:translate3d(3%,1%,0) scale(.98);background-position:1% 1%,50% -1%,98% 0;opacity:.3} to{transform:translate3d(-3%,-1.5%,0) scale(1.025);background-position:-3% -1%,46% 2%,94% -1%;opacity:.46} }
@@ -532,7 +534,7 @@ html.morph-boss::view-transition-group(enemy-reveal-0) { animation-duration:1.25
 @keyframes wolfPeerLeft { 0%,10%{opacity:0;transform:translate3d(-76%,4%,0) scale(.91)} 18%{opacity:.11} 25%,42%{opacity:.46;transform:translate3d(0,0,0) scale(1)} 48%{opacity:.25;transform:translate3d(-4%,-1%,0) scale(1.01)} 57%,100%{opacity:0;transform:translate3d(-76%,4%,0) scale(.91)} }
 @keyframes wolfPeerRight { 0%,14%{opacity:0;transform:translate3d(78%,5%,0) scale(.88)} 23%{opacity:.1} 31%,47%{opacity:.4;transform:translate3d(0,0,0) scale(.96)} 53%{opacity:.21;transform:translate3d(4%,-1%,0) scale(.98)} 62%,100%{opacity:0;transform:translate3d(78%,5%,0) scale(.88)} }
 @keyframes wolfTension { from{transform:scaleX(var(--wolf-facing)) translateY(1%) rotate(0deg)} to{transform:scaleX(var(--wolf-facing)) translateY(-1%) rotate(-.45deg)} }
-@media(max-width:620px){.wolf-shadow{width:clamp(110px,26vw,150px);height:32vh}.wolf-left{left:1vw}.wolf-right{right:1vw}}
+@media(max-width:620px){.wolf-shadow{width:clamp(110px,26vw,150px);height:32vh}.wolf-left{left:12vw}.wolf-right{right:12vw}}
 
 /* Fight 3: spores rise from the luminous hollow. */
 .hollow-glow { left:9%;right:9%;bottom:5%;height:42%;background:radial-gradient(ellipse at 50% 100%,rgba(136,73,190,.17),rgba(109,172,87,.06) 42%,transparent 70%);filter:blur(22px);animation:hollowPulse 5.5s ease-in-out infinite alternate; }
