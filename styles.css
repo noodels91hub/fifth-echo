@@ -239,6 +239,7 @@ button.echo-support:hover:not(:disabled) { border-color:#ae9aff;transform:transl
 .enemy-statuses { display:flex;flex-wrap:wrap;gap:4px;margin:-1px 0 6px; }
 .enemy-status { display:inline-flex;align-items:center;min-height:17px;padding:2px 5px;border:1px solid rgba(255,255,255,.16);border-radius:5px;font-size:7px;font-weight:900;line-height:1;letter-spacing:.03em;background:rgba(10,11,16,.72);box-shadow:0 3px 10px rgba(0,0,0,.2); }
 .enemy-status.armor { border-color:rgba(128,184,220,.34);color:#b9ddf2;background:rgba(31,74,103,.44); }
+.enemy-status.veil { border-color:rgba(174,139,232,.42);color:#e1c8ff;background:rgba(72,42,105,.48);box-shadow:0 0 12px rgba(150,100,221,.12); }
 .enemy-status.poison { border-color:rgba(126,211,100,.38);color:#b8ed99;background:rgba(44,92,36,.4); }
 .enemy-status.weakened { border-color:rgba(182,139,232,.4);color:#d7b6ff;background:rgba(65,39,92,.46); }
 .enemy-status.exposed { border-color:rgba(241,186,95,.42);color:#ffd58b;background:rgba(104,65,25,.44); }
@@ -693,6 +694,52 @@ button.echo-support:hover:not(:disabled) { border-color:#ae9aff;transform:transl
  .village-fire-glow,.basilica-pull,.courtyard-heat,.last-flame-pulse { animation:none!important;opacity:.42; }
 }
 
+/* World 3: moonlight, memory dust, and living reflections haunt the Court. */
+.hollow-life { background:linear-gradient(180deg,rgba(27,15,52,.12),transparent 45%,rgba(7,4,19,.2)); }
+.memory-mote { z-index:2;left:var(--memory-x);top:var(--memory-y);width:var(--memory-size);height:var(--memory-size);border-radius:50%;background:#d8c7ff;box-shadow:0 0 8px rgba(176,133,239,.84);opacity:0;animation:memoryDrift var(--memory-time) var(--memory-delay) ease-in-out infinite; }
+.memory-mote:nth-of-type(3n) { background:#d8efff;box-shadow:0 0 8px rgba(158,205,237,.72); }
+.court-fog { z-index:1;left:-16%;right:-16%;bottom:-7%;height:38%;background:radial-gradient(ellipse at center,rgba(177,171,208,.2),rgba(75,58,101,.1) 42%,transparent 72%);filter:blur(19px);animation:courtFog 12s ease-in-out infinite alternate; }
+.gate-fog { bottom:-3%;height:31%; }
+.court-moon-pulse { z-index:1;left:33%;right:33%;top:-7%;height:55%;background:radial-gradient(circle at 50% 20%,rgba(230,229,255,.2),rgba(144,116,210,.07) 35%,transparent 69%);filter:blur(12px);mix-blend-mode:screen;animation:moonRemember 5.6s ease-in-out infinite alternate; }
+.ballroom-moonbeam { z-index:1;left:29%;top:-9%;width:42%;height:96%;background:linear-gradient(170deg,rgba(224,232,255,.2),rgba(152,129,211,.075) 48%,transparent 82%);clip-path:polygon(38% 0,60% 0,92% 100%,4% 100%);filter:blur(11px);mix-blend-mode:screen;animation:ballroomBeam 6.4s ease-in-out infinite alternate; }
+.chandelier-shadow { z-index:2;left:32%;right:32%;top:-9%;height:30%;border-radius:50%;background:radial-gradient(ellipse at center,rgba(3,3,8,.62),transparent 68%);filter:blur(10px);transform-origin:50% 0;animation:chandelierSway 6.2s ease-in-out infinite alternate; }
+.crypt-fog { bottom:-12%;height:47%;opacity:.72;background:radial-gradient(ellipse at 50% 75%,rgba(125,109,156,.27),rgba(25,21,40,.13) 47%,transparent 74%); }
+.memory-ripple { z-index:2;left:27%;right:27%;bottom:4%;height:17%;border:1px solid rgba(195,174,231,.24);border-radius:50%;filter:blur(1px);opacity:0;animation:cryptRipple 4.8s ease-out infinite; }
+.mirror-flare { z-index:2;top:7%;width:1px;height:73%;background:linear-gradient(180deg,transparent,rgba(237,226,255,.7) 46%,transparent);box-shadow:0 0 14px rgba(175,129,244,.66);opacity:.12;transform:rotate(7deg);animation:mirrorGlint 4.7s ease-in-out infinite; }
+.flare-one { left:28%; }
+.flare-two { right:25%;animation-delay:-2.4s;transform:rotate(-6deg); }
+.floating-shard { z-index:2;left:50%;top:24%;width:14%;height:38%;border:1px solid rgba(217,201,246,.2);clip-path:polygon(44% 0,82% 34%,61% 100%,18% 65%);background:linear-gradient(125deg,transparent,rgba(196,170,237,.08),transparent);filter:drop-shadow(0 0 14px rgba(154,103,224,.24));animation:shardHover 7s ease-in-out infinite alternate; }
+.queen-halo-pulse { z-index:1;left:31%;right:31%;top:5%;height:64%;border-radius:50%;background:radial-gradient(circle,transparent 26%,rgba(202,174,247,.13) 28%,transparent 43%,rgba(120,79,183,.07) 46%,transparent 62%);filter:blur(3px);mix-blend-mode:screen;animation:queenHalo 4.5s ease-in-out infinite alternate; }
+.floating-crown { z-index:2;top:26%;width:7px;height:13px;background:linear-gradient(145deg,rgba(225,211,246,.72),rgba(112,77,157,.18));clip-path:polygon(50% 0,100% 100%,15% 78%);filter:drop-shadow(0 0 7px rgba(178,129,238,.72));animation:crownShard 6.8s ease-in-out infinite alternate; }
+.crown-one { left:27%;transform:rotate(-22deg); }
+.crown-two { right:25%;top:39%;animation-delay:-3.2s;transform:rotate(28deg); }
+@keyframes memoryDrift { 0%{opacity:0;transform:translate3d(0,8px,0) scale(.45)} 18%{opacity:.68} 54%{transform:translate3d(var(--memory-drift),-26px,0) scale(1)} 84%{opacity:.45} 100%{opacity:0;transform:translate3d(calc(var(--memory-drift) * -.35),-58px,0) scale(.35)} }
+@keyframes courtFog { from{opacity:.35;transform:translateX(-5%) scaleX(.95)} to{opacity:.7;transform:translateX(6%) scaleX(1.08)} }
+@keyframes moonRemember { from{opacity:.42;transform:scale(.93)} to{opacity:.9;transform:scale(1.06)} }
+@keyframes ballroomBeam { from{opacity:.35;transform:translateX(-2%) skewX(-1deg)} to{opacity:.78;transform:translateX(2%) skewX(1deg)} }
+@keyframes chandelierSway { from{transform:rotate(-1.2deg)} to{transform:rotate(1.2deg)} }
+@keyframes cryptRipple { 0%{opacity:0;transform:scale(.45)} 28%{opacity:.38} 100%{opacity:0;transform:scale(1.65)} }
+@keyframes mirrorGlint { 0%,18%,100%{opacity:.06;transform:translateX(-18px) rotate(7deg)} 48%{opacity:.7;transform:translateX(20px) rotate(7deg)} 62%{opacity:.12} }
+@keyframes shardHover { from{opacity:.22;transform:translate(-4%,-2%) rotate(-2deg)} to{opacity:.54;transform:translate(5%,3%) rotate(2deg)} }
+@keyframes queenHalo { from{opacity:.38;transform:scale(.9) rotate(-1deg)} to{opacity:.88;transform:scale(1.08) rotate(1deg)} }
+@keyframes crownShard { from{opacity:.2;translate:0 14px} to{opacity:.72;translate:13px -16px} }
+
+.combat-screen.world-3 .encounter-label { border-color:rgba(177,137,224,.45);color:#dcc1ff;box-shadow:0 0 18px rgba(142,91,210,.1); }
+.combat-screen.world-3 .enemy-card { background:linear-gradient(180deg,rgba(44,28,67,.08),rgba(8,7,15,.78)); }
+.combat-screen.world-3 .enemy-portrait img { filter:drop-shadow(0 17px 25px rgba(0,0,0,.82)) drop-shadow(0 0 13px rgba(141,92,199,.16)); }
+.encounter-reveal.world-3 .reveal-fog { background:radial-gradient(ellipse at center,rgba(204,194,228,.3),rgba(103,78,142,.12) 45%,transparent 68%); }
+.encounter-reveal.world-3 .reveal-creature.is-cutout img { filter:brightness(.65) contrast(1.13) saturate(.78) drop-shadow(0 25px 38px rgba(0,0,0,.95)) drop-shadow(0 0 24px rgba(139,88,206,.19)); }
+.encounter-reveal.world-3.elite .reveal-threat { color:#e0c2ff;border-color:rgba(179,132,231,.56);box-shadow:0 0 30px rgba(131,78,204,.19); }
+.encounter-reveal.world-3.boss::after { background:radial-gradient(ellipse at 50% 35%,rgba(226,210,255,.26),rgba(121,69,190,.12) 37%,transparent 70%); }
+.encounter-reveal.world-3.boss .reveal-threat { color:#e5c9ff;border-color:rgba(187,143,235,.62);box-shadow:0 0 34px rgba(139,80,213,.25); }
+.encounter-reveal.world-3.boss .boss-omen i { border-color:rgba(190,150,238,.42);box-shadow:inset 0 0 44px rgba(137,83,210,.12),0 0 52px rgba(154,98,223,.14); }
+.encounter-reveal.world-3.boss .reveal-creature img { filter:brightness(.59) contrast(1.2) saturate(.8) drop-shadow(0 27px 42px rgba(0,0,0,.95)) drop-shadow(0 0 34px rgba(143,89,211,.25)); }
+
+@media(prefers-reduced-motion:reduce){
+ .memory-mote,.chandelier-shadow,.mirror-flare,.floating-shard,.floating-crown { display:none!important; }
+ .court-fog,.court-moon-pulse,.ballroom-moonbeam,.memory-ripple,.queen-halo-pulse { animation:none!important;opacity:.38; }
+}
+
 /* Single enemies use one true 2:3 box. The portrait fills that exact box and
    the footer overlays its lower edge, so art, footer and gold frame never use
    competing widths (and the card still fits beside the combat controls). */
@@ -705,6 +752,7 @@ button.echo-support:hover:not(:disabled) { border-color:#ae9aff;transform:transl
 .enemy-stage.count-1 .enemy-portrait { position:absolute;inset:0;width:auto;height:auto;aspect-ratio:auto;overflow:hidden; }
 .enemy-stage.count-1 .enemy-portrait img { width:100%;height:100%;object-fit:cover;object-position:center;filter:none; }
 .enemy-stage.count-1 .enemy-data { position:absolute;left:0;right:0;bottom:0;width:100%;margin:0;border:0;border-top:1px solid rgba(255,255,255,.12);border-radius:0 0 15px 15px;background:linear-gradient(180deg,rgba(7,8,11,.86),rgba(5,6,9,.98)); }
+.combat-screen.world-3 .enemy-stage.count-1 .enemy-portrait img { object-fit:contain;object-position:center bottom;filter:drop-shadow(0 20px 30px rgba(0,0,0,.88)) drop-shadow(0 0 15px rgba(142,91,204,.18)); }
 @media(max-width:620px){
  .enemy-stage.count-1 .enemy-card,
  .combat-screen.elite .enemy-stage.count-1 .enemy-card,
