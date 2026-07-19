@@ -358,6 +358,9 @@ button.echo-support:hover:not(:disabled) { border-color:#ae9aff;transform:transl
 
 /* Ranked ability rewards */
 .ability-rank { margin-left:auto;padding:3px 5px;border-radius:5px;background:rgba(228,182,111,.14);color:var(--gold);font-size:8px;font-weight:900;letter-spacing:.05em; }
+.ability-rank.cooldown,.hero-ability-rank.cooldown { border:1px solid rgba(116,167,224,.35);background:rgba(55,91,139,.28);color:#add1f3;white-space:nowrap; }
+.ability-btn.cooling-down,.hero-ability-btn.cooling-down { border-color:rgba(116,167,224,.22);background:linear-gradient(135deg,rgba(37,50,75,.68),rgba(22,26,39,.86)); }
+.hero-ability-btn.cooling-down:disabled { opacity:.72; }
 .reward-rank { display:inline-flex;margin:0 0 7px;padding:4px 7px;border-radius:999px;background:rgba(141,120,232,.13);color:#cbbffc;font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase; }
 .reward-card.rank-reward { border-color:rgba(228,182,111,.48);background:linear-gradient(145deg,rgba(228,182,111,.12),rgba(255,255,255,.02)); }
 .reward-card.rank-reward .reward-rank { color:var(--gold);background:rgba(228,182,111,.14); }
