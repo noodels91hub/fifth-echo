@@ -751,9 +751,6 @@ button.echo-support:hover:not(:disabled) { border-color:#ae9aff;transform:transl
 .stilled-shard { z-index:2;top:27%;width:16px;height:38px;background:linear-gradient(150deg,rgba(220,246,255,.78),rgba(61,124,158,.22));clip-path:polygon(48% 0,100% 48%,58% 100%,0 62%);filter:drop-shadow(0 0 9px rgba(142,211,242,.46));animation:stilledShard 8s ease-in-out infinite alternate; }
 .shard-left { left:18%;transform:rotate(-18deg); }
 .shard-right { right:17%;top:38%;animation-delay:-4s;transform:rotate(24deg); }
-.gear-shadow { z-index:1;width:48vh;height:48vh;border:2px solid rgba(198,218,226,.12);border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(211,190,132,.13) 0 4deg,transparent 4deg 20deg);box-shadow:inset 0 0 0 18px rgba(24,51,69,.08),0 0 35px rgba(0,0,0,.24);will-change:transform;animation:gearMeasure 34s linear infinite; }
-.gear-near { left:-10vh;top:18%; }
-.gear-far { right:-6vh;top:8%;width:34vh;height:34vh;opacity:.55;animation-direction:reverse;animation-duration:47s; }
 .clockwork-fog { z-index:1;left:-12%;right:-12%;bottom:-9%;height:37%;background:radial-gradient(ellipse,rgba(151,196,214,.18),rgba(28,63,82,.08) 45%,transparent 72%);filter:blur(22px);animation:clockFog 14s ease-in-out infinite alternate; }
 .star-arc { z-index:1;left:7%;top:22%;width:86%;height:2px;background:linear-gradient(90deg,transparent,rgba(218,236,255,.7),transparent);box-shadow:0 0 11px rgba(165,207,255,.5);transform:rotate(-11deg);transform-origin:center;opacity:.32;animation:starSweep 13s ease-in-out infinite alternate; }
 .seer-orbit { z-index:1;left:36%;top:18%;width:28%;aspect-ratio:1;border:1px solid rgba(192,220,246,.2);border-radius:50%;box-shadow:0 0 25px rgba(122,171,218,.08);animation:seerOrbit 18s linear infinite; }
@@ -769,7 +766,6 @@ button.echo-support:hover:not(:disabled) { border-color:#ae9aff;transform:transl
 @keyframes frozenSuspension { from{opacity:.2;transform:translate3d(0,3px,0) rotate(-4deg)} to{opacity:.58;transform:translate3d(var(--frozen-drift),-7px,0) rotate(5deg)} }
 @keyframes frozenMoon { from{opacity:.34;transform:scale(.94)} to{opacity:.76;transform:scale(1.04)} }
 @keyframes stilledShard { from{opacity:.24;translate:-3px 5px} to{opacity:.68;translate:5px -6px} }
-@keyframes gearMeasure { to{transform:rotate(360deg)} }
 @keyframes clockFog { from{opacity:.28;transform:translateX(-4%) scaleX(.96)} to{opacity:.58;transform:translateX(5%) scaleX(1.07)} }
 @keyframes starSweep { from{opacity:.12;transform:translateY(-8px) rotate(-11deg)} to{opacity:.62;transform:translateY(10px) rotate(-9deg)} }
 @keyframes seerOrbit { to{transform:rotate(360deg)} }
@@ -806,10 +802,10 @@ button.echo-support:hover:not(:disabled) { border-color:#ae9aff;transform:transl
 @keyframes timeStopRing { 0%{opacity:0;transform:scale(.32) rotate(-12deg)} 32%{opacity:.58} 100%{opacity:0;transform:scale(1.18) rotate(4deg)} }
 
 @media(prefers-reduced-motion:reduce){
- .frozen-crystal,.gear-shadow,.star-arc,.seer-orbit,.bell-ripple,.time-stop-ring { display:none!important; }
+ .frozen-crystal,.star-arc,.seer-orbit,.bell-ripple,.time-stop-ring { display:none!important; }
  .causeway-moon,.clockwork-fog,.observatory-glow,.bell-frost,.midnight-dial,.midnight-pulse,.frozen-clock-hand { animation:none!important;opacity:.4; }
 }
-@media(max-width:620px){.frozen-life .frozen-crystal:nth-of-type(n+9){display:none}.gear-shadow{opacity:.34}.time-stop-ring{width:92vw}}
+@media(max-width:620px){.frozen-life .frozen-crystal:nth-of-type(n+9){display:none}.time-stop-ring{width:92vw}}
 
 /* Single enemies use one true 2:3 box. The portrait fills that exact box and
    the footer overlays its lower edge, so art, footer and gold frame never use
