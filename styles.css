@@ -435,21 +435,20 @@ button.echo-support:hover:not(:disabled) { border-color:#ae9aff;transform:transl
 /* Combat motion and impact feedback */
 .combat-screen.scene-entering::before { animation:sceneReveal .85s ease-out both; }
 .combat-screen.scene-entering .battlefield { animation:battlefieldReveal .7s .08s ease-out both; }
-.combat-screen.enemy-retaliating .battlefield { animation:cameraJolt .52s ease-out; }
-.battle-hero-card.hero-strike { z-index:8;animation:heroStrike .58s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 32px rgba(228,182,111,.32); }
-.battle-hero-card.hero-hit { animation:heroHit .62s ease-out; }
-.battle-hero-card.hero-healed { animation:heroHeal .78s ease-out; }
-.combat-screen .enemy-card.enemy-hit { animation:enemyHit .55s ease-out; }
-.combat-screen .enemy-card.enemy-strike { z-index:7;animation:enemyStrike .64s cubic-bezier(.2,.75,.2,1); }
-.combat-screen .enemy-card.just-defeated { animation:enemyDefeat .86s ease-in forwards;transform-origin:center bottom; }
+.battle-hero-card.hero-strike { z-index:8;animation:heroStrike .45s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 32px rgba(228,182,111,.32); }
+.battle-hero-card.hero-hit { animation:heroHit .5s ease-out; }
+.battle-hero-card.hero-healed { animation:heroHeal .62s ease-out; }
+.combat-screen .enemy-card.enemy-hit { animation:enemyHit .43s ease-out; }
+.combat-screen .enemy-card.enemy-strike { z-index:7;animation:enemyStrike .5s cubic-bezier(.2,.75,.2,1); }
+.combat-screen .enemy-card.just-defeated { animation:enemyDefeat .68s ease-in forwards;transform-origin:center bottom; }
 .combat-screen .enemy-card.defeated { opacity:.14; }
-.ability-btn.ability-cast { animation:abilityCast .62s ease-out;box-shadow:0 0 26px rgba(141,120,232,.55); }
-.combat-number { position:absolute;z-index:20;left:50%;top:24%;transform:translateX(-50%);pointer-events:none;font:800 clamp(16px,2vw,27px) Cinzel,serif;text-shadow:0 3px 10px #000;animation:floatNumber .82s ease-out forwards; }
+.ability-btn.ability-cast { animation:abilityCast .48s ease-out;box-shadow:0 0 26px rgba(141,120,232,.55); }
+.combat-number { position:absolute;z-index:20;left:50%;top:24%;transform:translateX(-50%);pointer-events:none;font:800 clamp(16px,2vw,27px) Cinzel,serif;text-shadow:0 3px 10px #000;animation:floatNumber .6s ease-out forwards; }
 .damage-number { color:#ff8b92; }
 .heal-number { color:#83e2b2; }
 .evade-number { color:#cbbffc;font-size:15px; }
-.enemy-card.enemy-hit::after,.battle-hero-card.hero-hit::after { content:"";position:absolute;z-index:15;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(circle at 50% 45%,rgba(255,245,210,.75),rgba(226,109,115,.2) 30%,transparent 66%);animation:impactBurst .55s ease-out forwards; }
-.battle-hero-card.hero-healed::after { content:"";position:absolute;z-index:15;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(circle at 30% 50%,rgba(112,198,155,.5),transparent 68%);animation:impactBurst .76s ease-out forwards; }
+.enemy-card.enemy-hit::after,.battle-hero-card.hero-hit::after { content:"";position:absolute;z-index:15;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(circle at 50% 45%,rgba(255,245,210,.75),rgba(226,109,115,.2) 30%,transparent 66%);animation:impactBurst .43s ease-out forwards; }
+.battle-hero-card.hero-healed::after { content:"";position:absolute;z-index:15;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(circle at 30% 50%,rgba(112,198,155,.5),transparent 68%);animation:impactBurst .6s ease-out forwards; }
 @keyframes sceneReveal { from{opacity:.25;transform:scale(1.08)} to{opacity:1;transform:scale(1.012)} }
 @keyframes battlefieldReveal { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
 @keyframes heroStrike { 0%,14%{transform:none} 46%,62%{transform:translateY(-18px) scale(1.035)} 76%{transform:translateY(-11px) scale(1.02)} 100%{transform:none} }
@@ -566,7 +565,7 @@ button.echo-support:hover:not(:disabled) { border-color:#ae9aff;transform:transl
 .hero-ability-empty small { font-size:7px;text-transform:uppercase;letter-spacing:.08em; }
 .hero-ability-btn .ability-tooltip { bottom:calc(100% + 8px);width:210px; }
 .hero-ability-btn:hover .ability-tooltip,.hero-ability-btn:focus-visible .ability-tooltip { opacity:1;visibility:visible;transform:translate(-50%,0); }
-.hero-ability-btn.ability-cast { animation:abilityCast .62s ease-out;box-shadow:0 0 26px rgba(141,120,232,.55); }
+.hero-ability-btn.ability-cast { animation:abilityCast .48s ease-out;box-shadow:0 0 26px rgba(141,120,232,.55); }
 .ability-btn,.hero-ability-btn { -webkit-touch-callout:none;user-select:none; }
 .ability-btn.hold-open,.hero-ability-btn.hold-open { z-index:30; }
 .ability-btn.hold-open .ability-tooltip,.hero-ability-btn.hold-open .ability-tooltip { opacity:1;visibility:visible;transform:translate(-50%,0); }
@@ -698,10 +697,15 @@ button.echo-support:hover:not(:disabled) { border-color:#ae9aff;transform:transl
 
 .combat-screen.world-2 .encounter-label { border-color:rgba(226,130,77,.36);color:#ffb17a; }
 .encounter-reveal.world-2 .reveal-fog { background:radial-gradient(ellipse at center,rgba(128,104,94,.28),transparent 62%); }
+.encounter-reveal.world-2.scene-2 .reveal-creature { animation-name:revenantEmerge; }
+.encounter-reveal.world-2.scene-2 .reveal-creature::after { content:"";position:absolute;z-index:0;inset:18% 15% 12%;border-radius:50%;background:radial-gradient(ellipse,rgba(255,105,45,.26),rgba(158,52,21,.08) 42%,transparent 70%);filter:blur(18px);animation:revenantEmber 1.7s .35s ease-in-out infinite alternate; }
+.encounter-reveal.world-2.scene-2 .reveal-creature.is-cutout img { filter:brightness(1.04) contrast(1.14) saturate(.94) drop-shadow(0 25px 36px rgba(0,0,0,.92)) drop-shadow(0 0 19px rgba(255,91,35,.28)); }
 .encounter-reveal.world-2.boss::after { background:radial-gradient(ellipse at 50% 35%,rgba(255,225,174,.27),rgba(255,91,30,.11) 34%,transparent 68%); }
 .encounter-reveal.world-2.boss .reveal-threat { color:#ffb06f;border-color:rgba(255,132,64,.52);box-shadow:0 0 30px rgba(255,88,28,.2); }
 .encounter-reveal.world-2.boss .boss-omen i { border-color:rgba(255,132,64,.38);box-shadow:inset 0 0 40px rgba(255,82,27,.09),0 0 48px rgba(255,82,27,.12); }
 .encounter-reveal.world-2.boss .reveal-creature img { filter:brightness(.56) contrast(1.28) saturate(.85) drop-shadow(0 0 38px rgba(255,88,27,.2)); }
+@keyframes revenantEmerge { 0%{opacity:0;transform:translate(calc(-50% + var(--entry-x)),7vh) scale(.72)} 14%{opacity:.18} 38%{opacity:.72} 62%{opacity:1;transform:translate(-50%,0) scale(.96)} 82%,100%{opacity:1;transform:translate(-50%,0) scale(1)} }
+@keyframes revenantEmber { from{opacity:.42;transform:scale(.88)} to{opacity:.82;transform:scale(1.08)} }
 
 @media(prefers-reduced-motion:reduce){
  .ash-flake,.world-ember,.ash-smoke,.swing-chain { display:none!important; }
