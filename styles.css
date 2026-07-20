@@ -243,6 +243,7 @@ button.echo-support:hover:not(:disabled) { border-color:#ae9aff;transform:transl
 .enemy-status.poison { border-color:rgba(126,211,100,.38);color:#b8ed99;background:rgba(44,92,36,.4); }
 .enemy-status.weakened { border-color:rgba(182,139,232,.4);color:#d7b6ff;background:rgba(65,39,92,.46); }
 .enemy-status.exposed { border-color:rgba(241,186,95,.42);color:#ffd58b;background:rgba(104,65,25,.44); }
+.enemy-status.time { border-color:rgba(132,196,231,.44);color:#c9efff;background:rgba(30,74,103,.48);box-shadow:0 0 12px rgba(111,195,235,.12); }
 .enemy-stage.count-1 .enemy-zone { display:flex;justify-content:center; }
 .enemy-stage.count-1 .enemy-card { width:min(45vw,600px);height:clamp(330px,50vh,570px);border-color:transparent;background:transparent;box-shadow:none; }
 .enemy-stage.count-1 .enemy-card.targeted { border-color:rgba(228,182,111,.45);background:linear-gradient(180deg,transparent 15%,rgba(8,10,13,.16));box-shadow:0 0 80px rgba(0,0,0,.16); }
@@ -301,8 +302,8 @@ button.echo-support:hover:not(:disabled) { border-color:#ae9aff;transform:transl
  .world-strip { padding:8px 10px; }
  .world-strip .path { display:none; }
  .battlefield { padding:8px 10px 14px;grid-template-rows:minmax(360px,1fr) auto; }
- .scene-story { position:relative;top:auto;left:auto;width:100%;grid-row:1;align-self:start;margin-top:4px; }
- .enemy-stage { grid-row:1;padding-top:70px; }
+ .scene-story { position:relative;top:auto;left:auto;width:100%;grid-column:1;grid-row:1;align-self:start;margin-top:4px; }
+ .enemy-stage { grid-column:1;grid-row:1;padding-top:70px; }
  .combat-screen .enemy-zone { grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:7px; }
  .combat-screen .enemy-card { height:260px; }
  .enemy-stage.count-1 .enemy-card,.combat-screen.elite .enemy-stage.count-1 .enemy-card,.combat-screen.boss .enemy-stage.count-1 .enemy-card { width:94vw;height:390px; }
@@ -544,8 +545,10 @@ button.echo-support:hover:not(:disabled) { border-color:#ae9aff;transform:transl
 .passive-status::before { content:"◆";margin-right:4px;color:#e4b66f;font-size:6px; }
 .passive-status.spent { color:#777582;text-decoration:line-through; }
 .passive-status.spent::before { color:#5b5964; }
-.burn-status,.evade-status { align-self:flex-start;margin-top:5px;padding:2px 5px;border:1px solid rgba(255,129,67,.34);border-radius:5px;background:rgba(137,44,21,.24);color:#ffb17a;font-size:8px;font-weight:900;letter-spacing:.04em;box-shadow:0 0 12px rgba(255,92,32,.08); }
+.burn-status,.evade-status,.chill-status,.time-mark-status { align-self:flex-start;margin-top:5px;padding:2px 5px;border:1px solid rgba(255,129,67,.34);border-radius:5px;background:rgba(137,44,21,.24);color:#ffb17a;font-size:8px;font-weight:900;letter-spacing:.04em;box-shadow:0 0 12px rgba(255,92,32,.08); }
 .evade-status { border-color:rgba(143,147,255,.38);background:rgba(46,45,110,.3);color:#c6c8ff;box-shadow:0 0 12px rgba(91,97,255,.1); }
+.chill-status { border-color:rgba(133,207,238,.42);background:rgba(36,85,111,.32);color:#c8f1ff;box-shadow:0 0 12px rgba(99,192,233,.11); }
+.time-mark-status { border-color:rgba(215,183,112,.42);background:rgba(96,72,31,.32);color:#f3d995;box-shadow:0 0 12px rgba(223,181,91,.1); }
 .loadout-count { display:none; }
 .hero-abilities { position:relative;align-self:center;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;width:100%; }
 .hero-ability-btn,.hero-ability-empty { position:relative;min-width:0;min-height:38px;border-radius:8px; }
@@ -741,6 +744,73 @@ button.echo-support:hover:not(:disabled) { border-color:#ae9aff;transform:transl
 }
 @media(max-width:620px){.hollow-life .memory-mote:nth-of-type(n+10){display:none}}
 
+/* World 4: suspended snow and clockwork motion bring the Frozen Hour to life. */
+.frozen-life { background:linear-gradient(180deg,rgba(15,39,61,.12),transparent 42%,rgba(4,13,23,.24)); }
+.frozen-crystal { z-index:2;left:var(--frozen-x);top:var(--frozen-y);width:var(--frozen-size);height:calc(var(--frozen-size) * 2.2);background:linear-gradient(150deg,#e8f8ff,#7db5d4 48%,#2b617f);clip-path:polygon(50% 0,100% 48%,50% 100%,0 48%);filter:drop-shadow(0 0 5px rgba(155,222,250,.65));opacity:.42;will-change:transform,opacity;animation:frozenSuspension var(--frozen-time) var(--frozen-delay) ease-in-out infinite alternate; }
+.causeway-moon { z-index:1;left:28%;right:28%;top:-12%;height:60%;border-radius:50%;background:radial-gradient(circle at 50% 26%,rgba(225,244,255,.24),rgba(103,161,198,.08) 36%,transparent 68%);filter:blur(12px);mix-blend-mode:screen;animation:frozenMoon 7s ease-in-out infinite alternate; }
+.stilled-shard { z-index:2;top:27%;width:16px;height:38px;background:linear-gradient(150deg,rgba(220,246,255,.78),rgba(61,124,158,.22));clip-path:polygon(48% 0,100% 48%,58% 100%,0 62%);filter:drop-shadow(0 0 9px rgba(142,211,242,.46));animation:stilledShard 8s ease-in-out infinite alternate; }
+.shard-left { left:18%;transform:rotate(-18deg); }
+.shard-right { right:17%;top:38%;animation-delay:-4s;transform:rotate(24deg); }
+.gear-shadow { z-index:1;width:48vh;height:48vh;border:2px solid rgba(198,218,226,.12);border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(211,190,132,.13) 0 4deg,transparent 4deg 20deg);box-shadow:inset 0 0 0 18px rgba(24,51,69,.08),0 0 35px rgba(0,0,0,.24);will-change:transform;animation:gearMeasure 34s linear infinite; }
+.gear-near { left:-10vh;top:18%; }
+.gear-far { right:-6vh;top:8%;width:34vh;height:34vh;opacity:.55;animation-direction:reverse;animation-duration:47s; }
+.clockwork-fog { z-index:1;left:-12%;right:-12%;bottom:-9%;height:37%;background:radial-gradient(ellipse,rgba(151,196,214,.18),rgba(28,63,82,.08) 45%,transparent 72%);filter:blur(22px);animation:clockFog 14s ease-in-out infinite alternate; }
+.star-arc { z-index:1;left:7%;top:22%;width:86%;height:2px;background:linear-gradient(90deg,transparent,rgba(218,236,255,.7),transparent);box-shadow:0 0 11px rgba(165,207,255,.5);transform:rotate(-11deg);transform-origin:center;opacity:.32;animation:starSweep 13s ease-in-out infinite alternate; }
+.seer-orbit { z-index:1;left:36%;top:18%;width:28%;aspect-ratio:1;border:1px solid rgba(192,220,246,.2);border-radius:50%;box-shadow:0 0 25px rgba(122,171,218,.08);animation:seerOrbit 18s linear infinite; }
+.observatory-glow { z-index:1;left:25%;right:25%;bottom:3%;height:43%;background:radial-gradient(ellipse at 50% 100%,rgba(137,178,232,.18),transparent 68%);filter:blur(16px);animation:observatoryBreathe 5.8s ease-in-out infinite alternate; }
+.bell-frost { z-index:1;left:29%;right:29%;top:4%;height:75%;background:radial-gradient(ellipse at 50% 25%,rgba(198,225,238,.17),rgba(83,127,151,.06) 45%,transparent 72%);filter:blur(14px);animation:bellFrost 4.7s ease-in-out infinite alternate; }
+.bell-ripple { z-index:2;left:38%;top:27%;width:24%;aspect-ratio:1;border:1px solid rgba(203,232,244,.28);border-radius:50%;opacity:0;animation:bellRipple 5.4s ease-out infinite; }
+.ripple-two { animation-delay:-2.7s; }
+.midnight-dial { z-index:1;left:31%;top:7%;width:38%;aspect-ratio:1;border:1px solid rgba(222,205,156,.23);border-radius:50%;background:repeating-conic-gradient(from -1deg,rgba(227,208,151,.18) 0 1deg,transparent 1deg 30deg);box-shadow:inset 0 0 50px rgba(104,163,197,.08),0 0 44px rgba(137,190,218,.08);animation:midnightDial 24s linear infinite; }
+.frozen-clock-hand { z-index:2;left:50%;top:15%;width:2px;height:31%;background:linear-gradient(180deg,rgba(239,219,159,.78),rgba(139,190,218,.2));box-shadow:0 0 8px rgba(210,229,236,.38);transform-origin:50% 100%; }
+.frozen-hour-hand { transform:rotate(-3deg);animation:hourTremor 4.2s ease-in-out infinite; }
+.frozen-minute-hand { height:36%;top:10%;transform:rotate(3deg);animation:minuteTremor 4.2s ease-in-out infinite reverse; }
+.midnight-pulse { z-index:1;left:24%;right:24%;top:0;height:72%;border-radius:50%;background:radial-gradient(circle,rgba(235,245,255,.12),rgba(150,197,224,.045) 43%,transparent 68%);filter:blur(10px);mix-blend-mode:screen;animation:midnightPulse 3.8s ease-in-out infinite alternate; }
+@keyframes frozenSuspension { from{opacity:.2;transform:translate3d(0,3px,0) rotate(-4deg)} to{opacity:.58;transform:translate3d(var(--frozen-drift),-7px,0) rotate(5deg)} }
+@keyframes frozenMoon { from{opacity:.34;transform:scale(.94)} to{opacity:.76;transform:scale(1.04)} }
+@keyframes stilledShard { from{opacity:.24;translate:-3px 5px} to{opacity:.68;translate:5px -6px} }
+@keyframes gearMeasure { to{transform:rotate(360deg)} }
+@keyframes clockFog { from{opacity:.28;transform:translateX(-4%) scaleX(.96)} to{opacity:.58;transform:translateX(5%) scaleX(1.07)} }
+@keyframes starSweep { from{opacity:.12;transform:translateY(-8px) rotate(-11deg)} to{opacity:.62;transform:translateY(10px) rotate(-9deg)} }
+@keyframes seerOrbit { to{transform:rotate(360deg)} }
+@keyframes observatoryBreathe { from{opacity:.3;transform:scale(.9)} to{opacity:.72;transform:scale(1.08)} }
+@keyframes bellFrost { from{opacity:.25;transform:scale(.92)} to{opacity:.68;transform:scale(1.06)} }
+@keyframes bellRipple { 0%{opacity:0;transform:scale(.38)} 25%{opacity:.42} 100%{opacity:0;transform:scale(2.2)} }
+@keyframes midnightDial { to{transform:rotate(360deg)} }
+@keyframes hourTremor { 0%,84%,100%{rotate:0deg} 90%{rotate:-1.2deg} 94%{rotate:.7deg} }
+@keyframes minuteTremor { 0%,84%,100%{rotate:0deg} 90%{rotate:1.4deg} 94%{rotate:-.8deg} }
+@keyframes midnightPulse { from{opacity:.32;transform:scale(.92)} to{opacity:.86;transform:scale(1.07)} }
+
+.combat-screen.world-4 .encounter-label { border-color:rgba(119,185,221,.48);color:#c9efff;box-shadow:0 0 18px rgba(83,161,204,.12); }
+.combat-screen.world-4 .enemy-card { background:linear-gradient(180deg,rgba(30,62,84,.08),rgba(5,11,18,.82)); }
+.combat-screen.world-4 .enemy-portrait img { filter:drop-shadow(0 18px 27px rgba(0,0,0,.85)) drop-shadow(0 0 14px rgba(94,183,225,.18)); }
+.encounter-reveal.world-4 .reveal-fog { background:radial-gradient(ellipse at center,rgba(191,226,243,.28),rgba(74,132,164,.1) 46%,transparent 69%); }
+.encounter-reveal.world-4 .reveal-creature.is-cutout img { filter:brightness(.67) contrast(1.16) saturate(.74) drop-shadow(0 26px 40px rgba(0,0,0,.96)) drop-shadow(0 0 24px rgba(93,182,225,.2)); }
+.encounter-reveal.world-4.scene-1 .reveal-creature img { animation:wraithHover 2.7s 1.15s ease-in-out infinite alternate; }
+.encounter-reveal.world-4.scene-2 .reveal-creature img { animation:sentinelMeasure 2.4s 1.2s ease-in-out infinite alternate; }
+.encounter-reveal.world-4.scene-3 .reveal-creature img { animation:seerFloat 3.1s 1.15s ease-in-out infinite alternate; }
+.encounter-reveal.world-4.elite .reveal-creature img { animation:bellwardenWeight 2.6s 1.2s ease-in-out infinite alternate; }
+.encounter-reveal.world-4.boss::after { background:radial-gradient(ellipse at 50% 35%,rgba(220,243,255,.26),rgba(95,164,199,.11) 38%,transparent 70%); }
+.encounter-reveal.world-4.boss .reveal-threat { color:#d1f1ff;border-color:rgba(130,202,236,.62);box-shadow:0 0 34px rgba(89,177,219,.25); }
+.encounter-reveal.world-4.boss .boss-omen i { border-color:rgba(148,210,237,.42);box-shadow:inset 0 0 44px rgba(84,164,202,.12),0 0 52px rgba(102,185,222,.14); }
+.encounter-reveal.world-4.boss .reveal-creature img { filter:brightness(.62) contrast(1.2) saturate(.76) drop-shadow(0 28px 44px rgba(0,0,0,.96)) drop-shadow(0 0 37px rgba(103,186,225,.25));animation:chronarchHover 2.5s 1.7s ease-in-out infinite alternate; }
+.time-stop-ring { position:absolute;z-index:2;left:50%;top:45%;width:min(64vw,760px);aspect-ratio:1;transform:translate(-50%,-50%);pointer-events:none; }
+.time-stop-ring i { position:absolute;inset:18%;border:1px solid rgba(201,230,242,.26);border-radius:50%;opacity:0;animation:timeStopRing 2.8s ease-out both; }
+.time-stop-ring i:nth-child(2) { inset:9%;animation-delay:.22s; }
+.time-stop-ring i:nth-child(3) { inset:0;animation-delay:.44s; }
+@keyframes wraithHover { from{transform:scaleX(var(--reveal-mirror)) translateY(1.2%) rotate(-.25deg)} to{transform:scaleX(var(--reveal-mirror)) translateY(-1.4%) rotate(.35deg)} }
+@keyframes sentinelMeasure { from{transform:scaleX(var(--reveal-mirror)) rotate(-.25deg)} to{transform:scaleX(var(--reveal-mirror)) rotate(.45deg)} }
+@keyframes seerFloat { from{transform:scaleX(var(--reveal-mirror)) translateY(1.4%)} to{transform:scaleX(var(--reveal-mirror)) translateY(-1.5%)} }
+@keyframes bellwardenWeight { from{transform:scaleX(var(--reveal-mirror)) translateY(.5%) scale(1)} to{transform:scaleX(var(--reveal-mirror)) translateY(-.3%) scale(1.008)} }
+@keyframes chronarchHover { from{transform:scaleX(var(--reveal-mirror)) translateY(.8%) scale(1)} to{transform:scaleX(var(--reveal-mirror)) translateY(-1%) scale(1.01)} }
+@keyframes timeStopRing { 0%{opacity:0;transform:scale(.32) rotate(-12deg)} 32%{opacity:.58} 100%{opacity:0;transform:scale(1.18) rotate(4deg)} }
+
+@media(prefers-reduced-motion:reduce){
+ .frozen-crystal,.gear-shadow,.star-arc,.seer-orbit,.bell-ripple,.time-stop-ring { display:none!important; }
+ .causeway-moon,.clockwork-fog,.observatory-glow,.bell-frost,.midnight-dial,.midnight-pulse,.frozen-clock-hand { animation:none!important;opacity:.4; }
+}
+@media(max-width:620px){.frozen-life .frozen-crystal:nth-of-type(n+9){display:none}.gear-shadow{opacity:.34}.time-stop-ring{width:92vw}}
+
 /* Single enemies use one true 2:3 box. The portrait fills that exact box and
    the footer overlays its lower edge, so art, footer and gold frame never use
    competing widths (and the card still fits beside the combat controls). */
@@ -754,6 +824,7 @@ button.echo-support:hover:not(:disabled) { border-color:#ae9aff;transform:transl
 .enemy-stage.count-1 .enemy-portrait img { width:100%;height:100%;object-fit:cover;object-position:center;filter:none; }
 .enemy-stage.count-1 .enemy-data { position:absolute;left:0;right:0;bottom:0;width:100%;margin:0;border:0;border-top:1px solid rgba(255,255,255,.12);border-radius:0 0 15px 15px;background:linear-gradient(180deg,rgba(7,8,11,.86),rgba(5,6,9,.98)); }
 .combat-screen.world-3 .enemy-stage.count-1 .enemy-portrait img { object-fit:contain;object-position:center bottom;filter:drop-shadow(0 20px 30px rgba(0,0,0,.88)) drop-shadow(0 0 15px rgba(142,91,204,.18)); }
+.combat-screen.world-4 .enemy-stage.count-1 .enemy-portrait img { object-fit:contain;object-position:center bottom;filter:drop-shadow(0 21px 31px rgba(0,0,0,.9)) drop-shadow(0 0 16px rgba(92,181,224,.2)); }
 @media(max-width:620px){
  .enemy-stage.count-1 .enemy-card,
  .combat-screen.elite .enemy-stage.count-1 .enemy-card,
