@@ -822,6 +822,65 @@ button.echo-support:hover:not(:disabled) { border-color:#ae9aff;transform:transl
 }
 @media(max-width:620px){.frozen-life .frozen-crystal:nth-of-type(n+9){display:none}.time-stop-ring{width:92vw}}
 
+/* World 5: fragments of every reality drift toward the five-part ending. */
+.fifth-life { background:radial-gradient(ellipse at 50% 46%,rgba(228,182,111,.07),transparent 48%),linear-gradient(180deg,rgba(4,4,8,.12),transparent 42%,rgba(3,3,7,.3)); }
+.reality-fragment { z-index:2;left:var(--fifth-x);top:var(--fifth-y);width:var(--fifth-size);height:calc(var(--fifth-size) * 2.3);background:linear-gradient(145deg,rgba(247,230,190,.78),rgba(132,95,51,.2));clip-path:polygon(48% 0,100% 38%,71% 100%,5% 78%);filter:drop-shadow(0 0 6px rgba(228,182,111,.48));opacity:.32;will-change:transform,opacity;animation:realityDrift var(--fifth-time) var(--fifth-delay) ease-in-out infinite alternate; }
+.reality-fragment:nth-of-type(4n+1) { background:linear-gradient(145deg,rgba(181,141,226,.74),rgba(67,42,100,.15));filter:drop-shadow(0 0 6px rgba(171,124,226,.44)); }
+.reality-fragment:nth-of-type(4n+2) { background:linear-gradient(145deg,rgba(128,205,234,.7),rgba(34,80,107,.15));filter:drop-shadow(0 0 6px rgba(104,190,226,.4)); }
+.reality-fragment:nth-of-type(4n+3) { background:linear-gradient(145deg,rgba(239,134,78,.72),rgba(95,39,22,.15));filter:drop-shadow(0 0 6px rgba(232,106,54,.4)); }
+.reality-seam { z-index:1;left:12%;right:12%;top:16%;height:2px;background:linear-gradient(90deg,transparent,rgba(242,221,169,.18),rgba(242,221,169,.72),rgba(242,221,169,.18),transparent);box-shadow:0 0 18px rgba(228,182,111,.28);animation:seamBreathe 5.2s ease-in-out infinite alternate; }
+.memory-arc { z-index:1;top:8%;width:34%;height:58%;border:1px solid rgba(228,182,111,.13);border-radius:50%;filter:blur(.2px);animation:memoryArc 13s ease-in-out infinite alternate; }
+.arc-one { left:4%;transform:rotate(-18deg); }
+.arc-two { right:4%;transform:rotate(18deg);animation-delay:-6.5s; }
+.null-rift { z-index:1;left:42%;top:7%;width:16%;height:68%;background:linear-gradient(90deg,transparent,rgba(0,0,0,.78) 38%,#000 50%,rgba(0,0,0,.78) 62%,transparent);filter:blur(7px);animation:nullBreathe 6s ease-in-out infinite alternate; }
+.erasure-sweep { z-index:2;left:-18%;top:29%;width:34%;height:2px;background:linear-gradient(90deg,transparent,rgba(235,221,188,.74),transparent);box-shadow:0 0 13px rgba(228,182,111,.34);animation:eraseSweep 11s linear infinite; }
+.future-orbit { z-index:1;left:31%;top:10%;width:38%;aspect-ratio:1;border:1px solid rgba(228,182,111,.18);border-radius:50%;box-shadow:inset 0 0 45px rgba(139,92,190,.07),0 0 30px rgba(228,182,111,.06);animation:futureOrbit 22s linear infinite; }
+.dead-sun { z-index:1;left:47%;top:15%;width:6%;aspect-ratio:1;border-radius:50%;background:#050509;box-shadow:0 0 0 1px rgba(246,225,174,.68),0 0 28px rgba(228,182,111,.28);animation:deadSun 4.8s ease-in-out infinite alternate; }
+.crucible-pulse { z-index:1;left:25%;right:25%;bottom:2%;height:44%;border-radius:50%;background:radial-gradient(ellipse at 50% 100%,rgba(239,219,168,.22),rgba(133,89,174,.06) 42%,transparent 70%);filter:blur(17px);animation:cruciblePulse 4.4s ease-in-out infinite alternate; }
+.echo-column { z-index:1;top:15%;width:2px;height:62%;background:linear-gradient(180deg,transparent,rgba(228,182,111,.52),transparent);box-shadow:0 0 14px rgba(228,182,111,.22);animation:echoColumn 5.5s ease-in-out infinite alternate; }
+.column-one { left:24%;transform:rotate(-8deg); }
+.column-two { right:24%;transform:rotate(8deg);animation-delay:-2.7s; }
+.horizon-breach { z-index:1;left:22%;right:22%;top:-7%;height:68%;border-radius:50%;background:radial-gradient(circle,rgba(247,228,177,.13),rgba(118,78,157,.035) 43%,transparent 69%);filter:blur(10px);mix-blend-mode:screen;animation:horizonBreach 3.6s ease-in-out infinite alternate; }
+.eclipse-echo { z-index:2;left:44%;top:16%;width:12%;aspect-ratio:1;border:1px solid rgba(247,225,170,.42);border-radius:50%;box-shadow:0 0 32px rgba(228,182,111,.2),inset 0 0 24px rgba(0,0,0,.9);animation:eclipseEcho 8s linear infinite; }
+@keyframes realityDrift { from{opacity:.14;transform:translate3d(0,7px,0) rotate(-7deg)} to{opacity:.52;transform:translate3d(var(--fifth-drift),-10px,0) rotate(9deg)} }
+@keyframes seamBreathe { from{opacity:.24;transform:scaleX(.9)} to{opacity:.78;transform:scaleX(1.04)} }
+@keyframes memoryArc { from{opacity:.16;translate:-5px 4px} to{opacity:.46;translate:8px -6px} }
+@keyframes nullBreathe { from{opacity:.45;transform:scaleX(.72)} to{opacity:.85;transform:scaleX(1.08)} }
+@keyframes eraseSweep { 0%{opacity:0;transform:translateX(0)} 16%,68%{opacity:.54} 100%{opacity:0;transform:translateX(410%)} }
+@keyframes futureOrbit { to{transform:rotate(360deg)} }
+@keyframes deadSun { from{opacity:.42;transform:scale(.9)} to{opacity:.88;transform:scale(1.08)} }
+@keyframes cruciblePulse { from{opacity:.3;transform:scale(.9)} to{opacity:.78;transform:scale(1.08)} }
+@keyframes echoColumn { from{opacity:.2;transform:translateY(8px) scaleY(.9)} to{opacity:.68;transform:translateY(-7px) scaleY(1.05)} }
+@keyframes horizonBreach { from{opacity:.34;transform:scale(.92)} to{opacity:.88;transform:scale(1.08)} }
+@keyframes eclipseEcho { to{transform:rotate(360deg)} }
+
+.combat-screen.world-5 .encounter-label { border-color:rgba(228,182,111,.52);color:#f1d394;box-shadow:0 0 20px rgba(228,182,111,.13); }
+.combat-screen.world-5 .enemy-card { background:linear-gradient(180deg,rgba(91,69,37,.08),rgba(7,6,10,.84)); }
+.combat-screen.world-5 .enemy-card.targeted { box-shadow:0 0 0 1px rgba(228,182,111,.12),0 18px 46px rgba(0,0,0,.45),0 0 35px rgba(228,182,111,.08); }
+.combat-screen.world-5 .enemy-portrait img { object-fit:contain;object-position:center bottom;filter:drop-shadow(0 19px 28px rgba(0,0,0,.9)) drop-shadow(0 0 16px rgba(228,182,111,.17)); }
+.fifth-status { border-color:rgba(228,182,111,.44);background:rgba(99,72,34,.34);color:#f2d494; }
+.encounter-reveal.world-5 .reveal-fog { background:radial-gradient(ellipse at center,rgba(235,219,181,.2),rgba(112,72,146,.08) 46%,transparent 70%); }
+.encounter-reveal.world-5 .reveal-creature.is-cutout img { filter:brightness(.72) contrast(1.14) saturate(.82) drop-shadow(0 28px 42px rgba(0,0,0,.96)) drop-shadow(0 0 27px rgba(228,182,111,.2)); }
+.encounter-reveal.world-5.scene-1 .reveal-creature img { animation:choirDrift 2.6s 1.05s ease-in-out infinite alternate; }
+.encounter-reveal.world-5.scene-2 .reveal-creature img { animation:nullStalk 2.2s 1.05s ease-in-out infinite alternate; }
+.encounter-reveal.world-5.scene-3 .reveal-creature img { animation:devourerBreathe 2.5s 1.15s ease-in-out infinite alternate; }
+.encounter-reveal.world-5.elite .reveal-creature img { animation:tyrantWeight 2.5s 1.2s ease-in-out infinite alternate; }
+.encounter-reveal.world-5.boss::after { background:radial-gradient(ellipse at 50% 35%,rgba(247,226,175,.28),rgba(125,78,164,.1) 37%,transparent 70%); }
+.encounter-reveal.world-5.boss .reveal-threat { color:#f3d796;border-color:rgba(228,182,111,.66);box-shadow:0 0 38px rgba(228,182,111,.23); }
+.encounter-reveal.world-5.boss .boss-omen i { border-color:rgba(228,182,111,.42);box-shadow:inset 0 0 45px rgba(228,182,111,.1),0 0 54px rgba(151,100,189,.12); }
+.encounter-reveal.world-5.boss .reveal-creature img { filter:brightness(.7) contrast(1.19) saturate(.84) drop-shadow(0 30px 46px rgba(0,0,0,.97)) drop-shadow(0 0 40px rgba(228,182,111,.28));animation:endOfFiveAwaken 2.4s 1.6s ease-in-out infinite alternate; }
+.fifth-break { position:absolute;z-index:2;left:50%;top:43%;width:min(70vw,850px);aspect-ratio:1;transform:translate(-50%,-50%);pointer-events:none; }
+.fifth-break i { position:absolute;left:44%;top:2%;width:12%;height:48%;border:1px solid rgba(241,217,160,.36);border-radius:70% 70% 18% 18%;transform-origin:50% 100%;opacity:0;box-shadow:inset 0 0 28px rgba(228,182,111,.07),0 0 28px rgba(228,182,111,.08);animation:fifthPetal 2.8s var(--petal-delay,1s) ease-out both; }
+.fifth-break i:nth-child(2){transform:rotate(72deg);--petal-delay:1.12s}.fifth-break i:nth-child(3){transform:rotate(144deg);--petal-delay:1.24s}.fifth-break i:nth-child(4){transform:rotate(216deg);--petal-delay:1.36s}.fifth-break i:nth-child(5){transform:rotate(288deg);--petal-delay:1.48s}
+@keyframes choirDrift { from{transform:scaleX(var(--reveal-mirror)) translateY(1.2%) rotate(-.35deg)} to{transform:scaleX(var(--reveal-mirror)) translateY(-1.4%) rotate(.35deg)} }
+@keyframes nullStalk { from{transform:scaleX(var(--reveal-mirror)) translate(-1%,1%) rotate(-.25deg)} to{transform:scaleX(var(--reveal-mirror)) translate(1%,-.7%) rotate(.35deg)} }
+@keyframes devourerBreathe { from{transform:scaleX(var(--reveal-mirror)) translateY(.8%) scale(1)} to{transform:scaleX(var(--reveal-mirror)) translateY(-.7%) scale(1.012)} }
+@keyframes tyrantWeight { from{transform:scaleX(var(--reveal-mirror)) translateY(.45%)} to{transform:scaleX(var(--reveal-mirror)) translateY(-.3%) scale(1.007)} }
+@keyframes endOfFiveAwaken { from{transform:scaleX(var(--reveal-mirror)) translateY(.7%) scale(1)} to{transform:scaleX(var(--reveal-mirror)) translateY(-.8%) scale(1.01)} }
+@keyframes fifthPetal { 0%{opacity:0;scale:.3;filter:blur(5px)} 38%{opacity:.62} 100%{opacity:.16;scale:1.04;filter:none} }
+@media(prefers-reduced-motion:reduce){.reality-fragment,.erasure-sweep,.future-orbit,.fifth-break{display:none!important}.reality-seam,.memory-arc,.null-rift,.dead-sun,.crucible-pulse,.echo-column,.horizon-breach,.eclipse-echo{animation:none!important;opacity:.36}}
+@media(max-width:620px){.fifth-life .reality-fragment:nth-of-type(n+8){display:none}.fifth-break{width:104vw}.encounter-reveal.world-5.scene-2 .reveal-creature{width:36vw}}
+
 /* Single enemies use one true 2:3 box. The portrait fills that exact box and
    the footer overlays its lower edge, so art, footer and gold frame never use
    competing widths (and the card still fits beside the combat controls). */
