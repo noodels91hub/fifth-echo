@@ -67,6 +67,10 @@ p { line-height:1.65; color:var(--muted); }
 .privacy-link:hover,.privacy-link:focus-visible { color:var(--gold);border-color:var(--gold);outline:none; }
 .section-head { display:flex; justify-content:space-between; align-items:end; margin-bottom:22px; gap:12px; }
 .section-head p { margin:4px 0 0; }
+.lobby-screen { position:relative;z-index:1; }
+.lobby-screen::before { content:"";position:fixed;z-index:-2;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(4,6,10,.62),rgba(5,7,11,.78) 58%,rgba(5,7,11,.94)),linear-gradient(90deg,rgba(5,7,11,.46),rgba(5,7,11,.12) 58%,rgba(5,7,11,.5)),url("assets/ui/fifth-echo-title-journey-v1.webp") center/cover no-repeat; }
+.lobby-screen::after { content:"";position:fixed;z-index:-1;inset:0;pointer-events:none;background:radial-gradient(circle at 72% 28%,rgba(228,182,111,.08),transparent 24%),linear-gradient(180deg,transparent 45%,rgba(4,6,10,.44)); }
+.lobby-screen .topbar,.lobby-screen .section-head { text-shadow:0 2px 14px rgba(0,0,0,.95); }
 .roster { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; }
 .hero-card,.member-card,.enemy-card,.reward-card { position:relative; padding:18px; text-align:left; color:var(--ink); background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.018)); border:1px solid var(--line); border-radius:14px; }
 button.hero-card { cursor:pointer; }
