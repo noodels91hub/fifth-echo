@@ -357,6 +357,243 @@ body {
     font-size: 7px;
   }
 
+  .android-app .lobby-screen {
+    width: 100%;
+    height: 100dvh;
+    min-height: 0;
+    padding: max(6px, env(safe-area-inset-top))
+      max(8px, env(safe-area-inset-right))
+      max(6px, env(safe-area-inset-bottom))
+      max(8px, env(safe-area-inset-left));
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .android-app .lobby-screen .topbar {
+    flex: 0 0 22px;
+    min-height: 22px;
+    margin: 0 0 2px;
+    gap: 7px;
+  }
+
+  .android-app .lobby-screen .brand {
+    font-size: 11px;
+    letter-spacing: 0.13em;
+  }
+
+  .android-app .lobby-screen .run-meta {
+    gap: 5px;
+  }
+
+  .android-app .lobby-screen .shards {
+    padding: 2px 5px;
+  }
+
+  .android-app .lobby-screen .lives {
+    gap: 5px;
+    font-size: 8px;
+  }
+
+  .android-app .lobby-screen .life {
+    width: 7px;
+    height: 7px;
+  }
+
+  .android-app .lobby-screen .section-head {
+    flex: 0 0 auto;
+    min-height: 31px;
+    margin: 0 0 4px;
+    align-items: center;
+  }
+
+  .android-app .lobby-screen .section-head .eyebrow {
+    font-size: 6px;
+  }
+
+  .android-app .lobby-screen .section-head h2 {
+    margin-top: 1px;
+    font-size: 15px;
+    line-height: 1;
+  }
+
+  .android-app .lobby-screen .section-head p {
+    display: none;
+  }
+
+  .android-app .lobby-screen .section-head > div:last-child {
+    font-size: 8px;
+  }
+
+  .android-app .lobby-screen .roster {
+    flex: 1 1 auto;
+    min-height: 0;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 5px;
+  }
+
+  .android-app .lobby-screen .hero-card {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    padding: 0;
+    border-radius: 8px;
+  }
+
+  .android-app .lobby-screen .portrait-stage {
+    height: 51%;
+    min-height: 0;
+  }
+
+  .android-app .lobby-screen .vitality {
+    right: 5px;
+    bottom: 4px;
+    padding: 2px 4px;
+    font-size: 6px;
+  }
+
+  .android-app .lobby-screen .card-copy {
+    height: 49%;
+    padding: 5px 6px;
+    overflow: hidden;
+  }
+
+  .android-app .lobby-screen .card-copy .class {
+    font-size: 5.5px;
+  }
+
+  .android-app .lobby-screen .card-copy h3 {
+    margin: 1px 0 3px;
+    font-size: 11px;
+  }
+
+  .android-app .lobby-screen .signature {
+    padding: 3px 4px;
+    border-radius: 4px;
+    font-size: 6.5px;
+  }
+
+  .android-app .lobby-screen .card-copy > p {
+    display: -webkit-box;
+    margin: 3px 0;
+    overflow: hidden;
+    font-size: 6px;
+    line-height: 1.2;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .android-app .lobby-screen .passive {
+    font-size: 5.5px;
+    letter-spacing: 0.08em;
+  }
+
+  .android-app .lobby-screen .passive small {
+    display: -webkit-box;
+    margin-top: 2px;
+    overflow: hidden;
+    font-size: 5px;
+    line-height: 1.15;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .android-app .lobby-screen .action-row {
+    flex: 0 0 28px;
+    align-items: flex-end;
+    margin-top: 4px;
+  }
+
+  .android-app .lobby-screen .action-row .primary {
+    min-height: 26px;
+    padding: 6px 11px;
+    border-radius: 6px;
+    font-size: 7px;
+  }
+
+  .android-app .lobby-screen .echo-archive {
+    flex: 0 0 58px;
+    height: 58px;
+    min-height: 0;
+    grid-template-columns: 148px minmax(0, 1fr);
+    gap: 5px;
+    margin: 0 0 4px;
+    padding: 4px 5px;
+    overflow: hidden;
+    border-radius: 7px;
+  }
+
+  .android-app .lobby-screen .echo-archive-copy .eyebrow {
+    font-size: 5px;
+  }
+
+  .android-app .lobby-screen .echo-archive-copy h3 {
+    margin: 2px 0 0;
+    font-size: 10px;
+  }
+
+  .android-app .lobby-screen .echo-archive-copy p {
+    display: none;
+  }
+
+  .android-app .lobby-screen .echo-options {
+    gap: 4px;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .android-app .lobby-screen .echo-option {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 48px;
+    grid-template-columns: 27px minmax(0, 1fr) auto;
+    gap: 3px;
+    padding: 3px;
+    border-radius: 6px;
+  }
+
+  .android-app .lobby-screen .echo-option-art {
+    width: 27px;
+    height: 36px;
+    border-radius: 4px;
+  }
+
+  .android-app .lobby-screen .echo-option span {
+    font-size: 4.5px;
+    letter-spacing: 0.05em;
+  }
+
+  .android-app .lobby-screen .echo-option h4 {
+    margin: 1px 0;
+    font-size: 8px;
+  }
+
+  .android-app .lobby-screen .echo-option p {
+    font-size: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .android-app .lobby-screen .echo-loadout-action button {
+    min-width: 35px;
+    padding: 3px;
+    font-size: 5px;
+  }
+
+  .android-app .lobby-screen.has-echoes .portrait-stage {
+    height: 43%;
+  }
+
+  .android-app .lobby-screen.has-echoes .card-copy {
+    height: 57%;
+  }
+
+  .android-app .lobby-screen.has-echoes .card-copy > p,
+  .android-app .lobby-screen.has-echoes .passive small {
+    display: none;
+  }
+
   .android-app .combat-screen {
     width: 100%;
     height: 100dvh;
