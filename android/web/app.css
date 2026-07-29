@@ -7,6 +7,241 @@ body {
   user-select: none;
 }
 
+/* Short-landscape encounter cinematics are staged for a phone GPU and its
+   shallow viewport. Artwork stays clear of the copy, and expensive scenery
+   layers pause while the full-screen reveal owns the frame. */
+@media (max-height: 520px) and (orientation: landscape) {
+  .android-app .encounter-reveal {
+    width: 100%;
+    height: 100dvh;
+  }
+
+  .android-app .encounter-reveal::before {
+    inset: 0;
+    filter: brightness(0.7) saturate(0.86);
+    animation: appCinematicPush 4.8s ease-out both;
+  }
+
+  .android-app .encounter-reveal .reveal-vignette {
+    background: radial-gradient(
+        ellipse at 54% 55%,
+        transparent 18%,
+        rgba(2, 4, 6, 0.12) 58%,
+        rgba(2, 3, 5, 0.76) 100%
+      ),
+      linear-gradient(180deg, rgba(2, 3, 5, 0.46), transparent 27%, rgba(2, 3, 5, 0.45));
+  }
+
+  .android-app .combat-screen.encounter-cinematic .scene-ambience {
+    display: none;
+  }
+
+  .android-app .encounter-reveal .reveal-copy {
+    top: max(6px, env(safe-area-inset-top));
+    width: min(620px, 78vw);
+    padding: 3px 8px;
+    animation: appRevealWords 2.5s ease-out both;
+  }
+
+  .android-app .encounter-reveal .reveal-threat {
+    margin-bottom: 3px;
+    padding: 3px 7px;
+    font-size: 7px;
+    backdrop-filter: none;
+  }
+
+  .android-app .encounter-reveal .reveal-copy .scene-kicker {
+    font-size: 8px;
+  }
+
+  .android-app .encounter-reveal .reveal-copy h2 {
+    margin: 2px 0 0;
+    font-size: clamp(18px, 3.4vw, 27px);
+    line-height: 1;
+  }
+
+  .android-app .encounter-reveal .reveal-copy p {
+    display: none;
+  }
+
+  .android-app .encounter-reveal .reveal-creature,
+  .android-app .encounter-reveal.count-3 .reveal-creature {
+    width: min(28vw, 190px);
+    height: 68dvh;
+    bottom: 1dvh;
+  }
+
+  .android-app .encounter-reveal.count-2 .reveal-creature {
+    width: min(34vw, 225px);
+    height: 74dvh;
+    bottom: 0;
+  }
+
+  .android-app .encounter-reveal .reveal-creature::before,
+  .android-app .encounter-reveal .creature-shadow {
+    filter: none;
+  }
+
+  .android-app .encounter-reveal .reveal-creature img,
+  .android-app .encounter-reveal .reveal-creature.is-cutout img,
+  .android-app .encounter-reveal.world-2.scene-2 .reveal-creature.is-cutout img,
+  .android-app .encounter-reveal.world-3 .reveal-creature.is-cutout img,
+  .android-app .encounter-reveal.world-4 .reveal-creature.is-cutout img,
+  .android-app .encounter-reveal.world-5 .reveal-creature.is-cutout img,
+  .android-app .encounter-reveal.boss .reveal-creature img,
+  .android-app .encounter-reveal.world-4.boss .reveal-creature img,
+  .android-app .encounter-reveal.world-5.boss .reveal-creature img {
+    filter: brightness(0.72) contrast(1.14) saturate(0.82)
+      drop-shadow(0 12px 12px rgba(0, 0, 0, 0.82));
+    animation: none !important;
+    will-change: auto;
+  }
+
+  .android-app .encounter-reveal .reveal-fog {
+    bottom: -9%;
+    height: 32%;
+    opacity: 0.24;
+    filter: none;
+  }
+
+  .android-app .encounter-reveal .fog-two {
+    display: none;
+  }
+
+  .android-app .encounter-reveal .card-forming {
+    bottom: 8px;
+    font-size: 7px;
+  }
+
+  .android-app .encounter-reveal .skip-intro {
+    top: max(8px, env(safe-area-inset-top));
+    right: max(9px, env(safe-area-inset-right));
+    bottom: auto;
+    padding: 6px 8px;
+    font-size: 7px;
+    backdrop-filter: none;
+  }
+
+  .android-app .encounter-reveal.boss::after {
+    left: 64%;
+    top: -8%;
+    width: 42vw;
+    height: 108%;
+    filter: none;
+  }
+
+  .android-app .encounter-reveal.boss .reveal-creature {
+    --reveal-x: 64% !important;
+    width: min(40vw, 305px);
+    height: 91dvh;
+    bottom: 1dvh;
+    animation-duration: 3.8s;
+  }
+
+  .android-app .encounter-reveal.boss .reveal-copy {
+    left: max(16px, env(safe-area-inset-left));
+    top: 48%;
+    bottom: auto;
+    width: min(43vw, 350px);
+    padding: 0;
+    transform: translateY(-50%);
+    text-align: left;
+    animation-name: appBossWords;
+  }
+
+  .android-app .encounter-reveal.boss .reveal-copy h2 {
+    max-width: 340px;
+    font-size: clamp(22px, 3.6vw, 31px);
+    line-height: 1.03;
+  }
+
+  .android-app .encounter-reveal.boss .card-forming {
+    left: max(16px, calc(env(safe-area-inset-left) + 4px));
+    bottom: 24%;
+    transform: none;
+  }
+
+  .android-app .encounter-reveal.boss .boss-omen i {
+    left: 64%;
+    top: 50%;
+    width: min(42vw, 72dvh);
+    max-width: none;
+    box-shadow: none;
+  }
+
+  .android-app .encounter-reveal.boss .boss-omen i:nth-child(2) {
+    width: min(31vw, 54dvh);
+  }
+
+  .android-app .encounter-reveal.boss .boss-omen i:nth-child(3) {
+    display: none;
+  }
+
+  .android-app .encounter-reveal.boss .time-stop-ring,
+  .android-app .encounter-reveal.boss .fifth-break {
+    left: 64%;
+    top: 49%;
+    width: min(45vw, 76dvh);
+  }
+
+  .android-app .encounter-reveal.boss .fifth-break i {
+    box-shadow: none;
+  }
+
+  .android-app .cards-arriving .enemy-card {
+    animation-duration: 0.38s;
+  }
+
+  .android-app .scene-ambience i:nth-of-type(n + 10) {
+    display: none;
+  }
+
+  .android-app .ground-fog {
+    filter: blur(10px);
+  }
+
+  .android-app .hunter-stalk .fog-front {
+    display: none;
+  }
+
+  .android-app .combat-screen .enemy-portrait img {
+    filter: drop-shadow(0 9px 13px rgba(0, 0, 0, 0.82));
+  }
+
+  @keyframes appCinematicPush {
+    from {
+      opacity: 0.38;
+      transform: scale(1.02);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1.065);
+    }
+  }
+
+  @keyframes appRevealWords {
+    from {
+      opacity: 0;
+      transform: translate(-50%, 7px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }
+
+  @keyframes appBossWords {
+    from {
+      opacity: 0;
+      transform: translateY(calc(-50% + 8px));
+    }
+    to {
+      opacity: 1;
+      transform: translateY(-50%);
+    }
+  }
+}
+
 body {
   min-height: 100dvh;
 }
