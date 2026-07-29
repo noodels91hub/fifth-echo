@@ -318,13 +318,11 @@ body {
     max-height: calc(100dvh - 43px);
     margin: 5px 0 0;
     padding: 15px 20px;
-    border-radius: 12px;
+    border-radius: 0;
   }
 
-  .android-app .title-screen .hero::after {
-    right: -5px;
-    bottom: -46px;
-    font-size: 145px;
+  .android-app .title-screen .hero::before {
+    inset: -14px -60px -18px -8vw;
   }
 
   .android-app .title-screen .hero .eyebrow {
