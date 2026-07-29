@@ -343,7 +343,28 @@ body {
     line-height: 1.38;
   }
 
-  .android-app .title-screen .primary {
+  .android-app .title-screen .save-summary {
+    gap: 1px;
+    margin: 0 0 7px;
+    padding: 5px 8px;
+    border-radius: 7px;
+  }
+
+  .android-app .title-screen .save-summary span,
+  .android-app .title-screen .save-summary small {
+    font-size: 6px;
+  }
+
+  .android-app .title-screen .save-summary b {
+    font-size: 8px;
+  }
+
+  .android-app .title-screen .title-actions {
+    gap: 6px;
+  }
+
+  .android-app .title-screen .primary,
+  .android-app .title-screen .secondary {
     padding: 8px 13px;
     border-radius: 7px;
     font-size: 8px;
