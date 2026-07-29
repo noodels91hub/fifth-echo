@@ -7,7 +7,9 @@ const outputDirectory = path.resolve(sourceDirectory, "..");
 const projectDirectory = path.resolve(sourceDirectory, "..", "..", "..");
 
 async function generate() {
-  const appIcon = fs.readFileSync(path.join(sourceDirectory, "app-icon.svg"));
+  const appIcon = fs.readFileSync(
+    path.join(projectDirectory, "assets", "ui", "nyx-app-icon-source-v1.webp"),
+  );
   await sharp(appIcon, { density: 192 })
     .resize(512, 512)
     .flatten({ background: "#07090e" })

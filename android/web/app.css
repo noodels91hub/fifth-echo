@@ -32,6 +32,96 @@ body {
 }
 
 @media (max-height: 520px) and (orientation: landscape) {
+  .android-app .title-screen {
+    width: 100%;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .android-app .title-screen .shell {
+    width: 100%;
+    height: 100%;
+    padding: max(7px, env(safe-area-inset-top))
+      max(12px, env(safe-area-inset-right))
+      max(7px, env(safe-area-inset-bottom))
+      max(12px, env(safe-area-inset-left));
+  }
+
+  .android-app .title-screen .topbar {
+    min-height: 22px;
+    margin: 0 0 3px;
+    gap: 7px;
+  }
+
+  .android-app .title-screen .brand {
+    font-size: 11px;
+    letter-spacing: 0.13em;
+  }
+
+  .android-app .title-screen .run-meta {
+    gap: 5px;
+  }
+
+  .android-app .title-screen .shards {
+    padding: 2px 5px;
+  }
+
+  .android-app .title-screen .lives {
+    gap: 5px;
+    font-size: 8px;
+  }
+
+  .android-app .title-screen .life {
+    width: 7px;
+    height: 7px;
+  }
+
+  .android-app .title-screen .hero {
+    width: min(430px, 52vw);
+    max-width: none;
+    max-height: calc(100dvh - 43px);
+    margin: 5px 0 0;
+    padding: 15px 20px;
+    border-radius: 12px;
+  }
+
+  .android-app .title-screen .hero::after {
+    right: -5px;
+    bottom: -46px;
+    font-size: 145px;
+  }
+
+  .android-app .title-screen .hero .eyebrow {
+    font-size: 7px;
+  }
+
+  .android-app .title-screen .hero h1 {
+    margin: 6px 0 8px;
+    font-size: 42px;
+    line-height: 0.86;
+  }
+
+  .android-app .title-screen .hero p {
+    margin: 7px 0 10px;
+    font-size: 8.5px;
+    line-height: 1.38;
+  }
+
+  .android-app .title-screen .primary {
+    padding: 8px 13px;
+    border-radius: 7px;
+    font-size: 8px;
+  }
+
+  .android-app .title-screen .legal-row {
+    margin-top: 7px;
+  }
+
+  .android-app .title-screen .privacy-link {
+    font-size: 7px;
+  }
+
   .android-app .combat-screen {
     width: 100%;
     height: 100dvh;

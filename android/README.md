@@ -75,8 +75,10 @@ playtesting only and is not a Play Store release.
 - Required web files and all five worlds confirmed inside the APK
 - APK declares no permissions
 - Source `game.js` hash confirmed equal to the generated Android asset
+- Debug APK installed and launched on a Samsung Galaxy A17 running Android 16
+- Compact title and combat layouts verified at the A17's 832 × 384 CSS viewport
 
-No Android emulator is installed and no connected device was available, so physical-device
-launch, touch, notch, and performance testing remain required before release.
+Full-campaign touch, long-session performance, battery, and additional-device testing remain
+required before release.
 
 See [PLAY_STORE_CHECKLIST.md](PLAY_STORE_CHECKLIST.md) for the owner-controlled release steps.

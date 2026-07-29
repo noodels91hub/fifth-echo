@@ -6,7 +6,9 @@ initial listing set:
 - `app-icon-512.png` — 512 × 512 app icon.
 - `feature-graphic-1024x500.png` — 1024 × 500 feature graphic.
 
-The SVG source files are kept in `source/` so the branding is easy to revise.
+The high-resolution Nyx icon source is kept at
+`assets/ui/nyx-app-icon-source-v1.webp`; the feature graphic overlay source
+remains in `source/` so the branding is easy to revise.
 Before production release, review these at phone size and replace them if the
 final Fifth Echo brand direction changes.
 
