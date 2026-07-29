@@ -32,11 +32,295 @@ body {
 }
 
 @media (max-height: 520px) and (orientation: landscape) {
+  .android-app .combat-screen {
+    width: 100%;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+  }
+
   .android-app .combat-hud {
-    padding-top: max(7px, env(safe-area-inset-top));
+    position: absolute;
+    z-index: 30;
+    inset: 0 0 auto;
+    padding: max(4px, env(safe-area-inset-top))
+      max(8px, env(safe-area-inset-right)) 0
+      max(8px, env(safe-area-inset-left));
+    pointer-events: none;
+  }
+
+  .android-app .combat-topbar .topbar,
+  .android-app .world-strip {
+    pointer-events: auto;
+  }
+
+  .android-app .combat-topbar .topbar {
+    min-height: 22px;
+    margin: 0 0 3px;
+    gap: 7px;
+  }
+
+  .android-app .combat-topbar .brand {
+    font-size: 11px;
+    letter-spacing: 0.13em;
+  }
+
+  .android-app .run-meta {
+    gap: 5px;
+  }
+
+  .android-app .shards,
+  .android-app .test-nav {
+    padding: 2px 5px;
+  }
+
+  .android-app .lives {
+    gap: 5px;
+    font-size: 8px;
+  }
+
+  .android-app .life {
+    width: 7px;
+    height: 7px;
+  }
+
+  .android-app .world-strip {
+    min-height: 29px;
+    padding: 3px 8px;
+    gap: 8px;
+    border-radius: 9px;
+  }
+
+  .android-app .world-strip .world-title {
+    gap: 6px;
+  }
+
+  .android-app .world-strip .world-number {
+    font-size: 15px;
+  }
+
+  .android-app .world-strip h3 {
+    font-size: 10px;
+  }
+
+  .android-app .world-strip .eyebrow {
+    font-size: 6px;
+  }
+
+  .android-app .world-strip .node {
+    width: 18px;
+    height: 18px;
+    font-size: 7px;
+  }
+
+  .android-app .world-strip .dash {
+    width: 12px;
   }
 
   .android-app .battlefield {
-    min-height: calc(100dvh - 70px);
+    width: 100%;
+    height: 100dvh;
+    min-height: 0;
+    padding: max(59px, calc(env(safe-area-inset-top) + 55px))
+      max(8px, env(safe-area-inset-right))
+      max(5px, env(safe-area-inset-bottom))
+      max(8px, env(safe-area-inset-left));
+    grid-template-rows: minmax(0, 1fr) 88px;
+    gap: 5px;
+    overflow: hidden;
+  }
+
+  .android-app .scene-story {
+    top: max(61px, calc(env(safe-area-inset-top) + 57px));
+    left: max(8px, env(safe-area-inset-left));
+    width: min(235px, 30vw);
+    padding: 5px 8px;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .android-app .scene-story .scene-kicker {
+    font-size: 8px;
+  }
+
+  .android-app .scene-story p {
+    margin-top: 2px;
+    font-size: 6.5px;
+    line-height: 1.3;
+  }
+
+  .android-app .enemy-stage {
+    min-height: 0;
+    padding: 7px 0 0;
+  }
+
+  .android-app .enemy-stage .encounter-label {
+    top: 1px;
+    padding: 4px 7px;
+    font-size: 7px;
+  }
+
+  .android-app .enemy-stage.count-2 .enemy-zone {
+    grid-template-columns: repeat(2, minmax(0, 126px));
+    gap: 8px;
+  }
+
+  .android-app .enemy-stage.count-3 .enemy-zone {
+    grid-template-columns: repeat(3, minmax(0, 108px));
+    gap: 7px;
+  }
+
+  .android-app .enemy-stage.count-2 .enemy-card,
+  .android-app .enemy-stage.count-3 .enemy-card {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    aspect-ratio: 11 / 18;
+  }
+
+  .android-app .combat-screen.elite .enemy-stage.count-1 .enemy-card,
+  .android-app .combat-screen.boss .enemy-stage.count-1 .enemy-card,
+  .android-app .enemy-stage.count-1 .enemy-card {
+    width: min(168px, 21vw);
+    height: auto;
+    max-height: 100%;
+    aspect-ratio: 2 / 3;
+  }
+
+  .android-app .combat-screen .enemy-portrait {
+    bottom: 53px;
+  }
+
+  .android-app .combat-screen .enemy-data {
+    padding: 6px 8px;
+  }
+
+  .android-app .combat-screen .enemy-data h2 {
+    margin: 1px 0 3px;
+    font-size: 11px;
+  }
+
+  .android-app .combat-screen .enemy-data .class {
+    font-size: 6px;
+  }
+
+  .android-app .combat-screen .enemy-data .intent {
+    right: 5px;
+    bottom: calc(100% + 5px);
+    padding: 4px 5px;
+  }
+
+  .android-app .command-deck,
+  .android-app .hero-deck {
+    min-height: 0;
+    height: 88px;
+  }
+
+  .android-app .hero-deck {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px;
+    overflow: visible;
+    padding: 0;
+  }
+
+  .android-app .battle-hero-card {
+    height: 88px;
+    min-height: 0;
+    padding: 4px;
+    grid-template-columns: 40px minmax(55px, 0.5fr) minmax(112px, 1.5fr);
+    gap: 4px;
+    border-radius: 8px;
+  }
+
+  .android-app .battle-hero-art {
+    width: 40px;
+    border-radius: 6px;
+  }
+
+  .android-app .battle-hero-copy {
+    padding: 8px 0 0;
+  }
+
+  .android-app .battle-hero-copy .class {
+    font-size: 5px;
+  }
+
+  .android-app .battle-hero-copy h3 {
+    margin: 1px 0 4px;
+    font-size: 9px;
+  }
+
+  .android-app .battle-hero-copy .hp-row {
+    gap: 3px;
+  }
+
+  .android-app .battle-hero-copy .hp-row .bar {
+    flex-basis: 38px;
+    height: 4px;
+  }
+
+  .android-app .battle-hero-copy .hp-row b,
+  .android-app .battle-hero-copy .hp-row small {
+    font-size: 6px;
+  }
+
+  .android-app .battle-hero-card.active-turn::after {
+    left: 48px;
+    top: 4px;
+    font-size: 5px;
+  }
+
+  .android-app .passive-status,
+  .android-app .burn-status,
+  .android-app .evade-status,
+  .android-app .chill-status,
+  .android-app .time-mark-status {
+    margin-top: 3px;
+    padding: 1px 3px;
+    font-size: 5px;
+  }
+
+  .android-app .hero-abilities {
+    gap: 3px;
+  }
+
+  .android-app .hero-ability-btn,
+  .android-app .hero-ability-empty {
+    min-height: 36px;
+    border-radius: 6px;
+  }
+
+  .android-app .hero-ability-btn {
+    grid-template-columns: 19px minmax(0, 1fr) auto;
+    gap: 2px;
+    padding: 2px 3px;
+  }
+
+  .android-app .hero-ability-icon {
+    width: 19px;
+    height: 19px;
+    font-size: 11px;
+  }
+
+  .android-app .hero-ability-name {
+    font-size: 6.5px;
+  }
+
+  .android-app .hero-ability-rank {
+    padding: 1px 2px;
+    font-size: 5px;
+  }
+
+  .android-app .hero-ability-empty small {
+    font-size: 5px;
+  }
+
+  .android-app .ability-btn.hold-open .ability-tooltip,
+  .android-app .hero-ability-btn.hold-open .ability-tooltip {
+    left: max(12px, env(safe-area-inset-left));
+    right: max(12px, env(safe-area-inset-right));
+    bottom: calc(max(8px, env(safe-area-inset-bottom)) + 92px);
+    padding: 9px 12px;
+    font-size: 11px;
+    line-height: 1.4;
   }
 }
