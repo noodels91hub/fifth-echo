@@ -30,7 +30,6 @@ public final class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        enterImmersiveMode();
 
         gameView = new WebView(this);
         gameView.setBackgroundColor(Color.rgb(9, 10, 18));
@@ -83,6 +82,7 @@ public final class MainActivity extends Activity {
         });
 
         setContentView(gameView);
+        gameView.post(this::enterImmersiveMode);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             registerPredictiveBack();
         }
@@ -92,9 +92,10 @@ public final class MainActivity extends Activity {
     }
 
     private void enterImmersiveMode() {
+        View decorView = getWindow().getDecorView();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             getWindow().setDecorFitsSystemWindows(false);
-            WindowInsetsController controller = getWindow().getInsetsController();
+            WindowInsetsController controller = decorView.getWindowInsetsController();
             if (controller != null) {
                 controller.hide(WindowInsets.Type.statusBars() | WindowInsets.Type.navigationBars());
                 controller.setSystemBarsBehavior(
@@ -102,7 +103,7 @@ public final class MainActivity extends Activity {
                 );
             }
         } else {
-            getWindow().getDecorView().setSystemUiVisibility(
+            decorView.setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                     | View.SYSTEM_UI_FLAG_FULLSCREEN
                     | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
