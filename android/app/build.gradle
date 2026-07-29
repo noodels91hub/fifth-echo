@@ -1,0 +1,64 @@
+apply plugin: "com.android.application"
+
+android {
+    namespace "com.noodels91hub.fifthecho"
+    compileSdk 36
+
+    defaultConfig {
+        applicationId "com.noodels91hub.fifthecho"
+        minSdk 26
+        targetSdk 36
+        versionCode 1
+        versionName "0.1.0"
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+        }
+        release {
+            minifyEnabled false
+            shrinkResources false
+            // Release signing is intentionally not configured. The owner must
+            // create and protect an upload key before a Play Store release.
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    lint {
+        // Adaptive icons require the v26 resource qualifier even though the
+        // app's minimum supported Android version is API 26.
+        disable "ObsoleteSdkInt"
+    }
+}
+
+def repositoryRoot = rootProject.projectDir.parentFile
+def generatedWebAssets = layout.buildDirectory.dir("generated/fifthEchoWeb")
+
+tasks.register("syncWebAssets", Sync) {
+    group = "fifth echo"
+    description = "Bundles the current web game into the Android app for offline play."
+    into(generatedWebAssets.map { it.dir("www") })
+
+    from(repositoryRoot) {
+        include "game.js"
+        include "styles.css"
+        include "privacy.html"
+        include "assets/**"
+        exclude "assets/**/*.png"
+        exclude "assets/**/.gitkeep"
+    }
+
+    from(rootProject.file("web")) {
+        include "index.html"
+        include "app.css"
+    }
+}
+
+android.sourceSets.main.assets.srcDir(generatedWebAssets)
+tasks.named("preBuild").configure { dependsOn("syncWebAssets") }

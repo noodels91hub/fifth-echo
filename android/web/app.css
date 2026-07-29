@@ -1,0 +1,42 @@
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  overscroll-behavior: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+.android-app body,
+.android-app button,
+.android-app select {
+  -webkit-touch-callout: none;
+}
+
+.android-app .shell {
+  padding-top: max(28px, env(safe-area-inset-top));
+  padding-bottom: max(48px, env(safe-area-inset-bottom));
+}
+
+.android-app button,
+.android-app select {
+  touch-action: manipulation;
+}
+
+.android-app .combat-screen {
+  min-height: 100dvh;
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .android-app .combat-hud {
+    padding-top: max(7px, env(safe-area-inset-top));
+  }
+
+  .android-app .battlefield {
+    min-height: calc(100dvh - 70px);
+  }
+}
