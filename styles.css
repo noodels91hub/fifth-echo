@@ -606,11 +606,24 @@ button.echo-support:hover:not(:disabled) { border-color:#ae9aff;transform:transl
 .boss-omen i:nth-child(2) { --omen-delay:1.45s;width:34vw; }
 .boss-omen i:nth-child(3) { --omen-delay:1.8s;width:23vw; }
 
+/* World One's alternate paths get silhouettes and entrances of their own. */
+.encounter-reveal.route-bramble-shortcut .reveal-creature { width:clamp(210px,25vw,390px);height:60vh;animation-name:creeperUncoil; }
+.encounter-reveal.route-deep-hunt .reveal-creature { width:clamp(205px,24vw,380px);height:66vh;animation-name:trackerStalk; }
+.encounter-reveal.route-spore-nursery .reveal-creature { width:clamp(220px,27vw,420px);height:56vh;animation-name:huskBloom;transform-origin:center bottom; }
+.encounter-reveal.route-root-guarded-passage .reveal-creature { width:clamp(210px,23vw,355px);height:76vh;animation-name:stagOathstep; }
+.encounter-reveal.route-spore-nursery .reveal-fog { background:radial-gradient(ellipse at center,rgba(178,107,229,.34),rgba(85,43,120,.11) 48%,transparent 70%); }
+.encounter-reveal.route-root-guarded-passage .reveal-fog { background:radial-gradient(ellipse at center,rgba(91,224,159,.24),rgba(36,103,74,.08) 48%,transparent 70%); }
+.encounter-reveal.route-spore-nursery .reveal-creature:nth-of-type(odd),.encounter-reveal.route-bramble-shortcut .reveal-creature:nth-of-type(odd) { transform-origin:center bottom; }
+
 /* The cinematic swaps into lightweight compositor-only cards for app/web parity. */
 
 @keyframes encounterCurtain { from{opacity:0} to{opacity:1} }
 @keyframes cinematicPush { from{opacity:.15;transform:scale(1.03);background-position:50% 45%} 18%{opacity:1} to{opacity:1;transform:scale(1.115);background-position:50% 51%} }
 @keyframes creatureEmerge { 0%{opacity:0;transform:translate(calc(-50% + var(--entry-x)),7vh) scale(.72)} 20%{opacity:.08} 58%{opacity:.86;transform:translate(-50%,0) scale(.96)} 82%,100%{opacity:1;transform:translate(-50%,0) scale(1)} }
+@keyframes creeperUncoil { 0%,10%{opacity:0;transform:translate(calc(-50% + var(--entry-x)),18vh) scale(.28,.16) rotate(-8deg)} 32%{opacity:.38} 66%{opacity:1;transform:translate(-50%,1vh) scale(1.04,.94) rotate(1deg)} 82%{transform:translate(-50%,-1vh) scale(.98,1.03)} 100%{opacity:1;transform:translate(-50%,0) scale(1)} }
+@keyframes trackerStalk { 0%,8%{opacity:0;transform:translate(calc(-50% + var(--entry-x)),3vh) scale(.7)} 30%{opacity:.18} 64%{opacity:1;transform:translate(-50%,0) scale(1.035)} 80%{transform:translate(-50%,0) scale(.985)} 100%{opacity:1;transform:translate(-50%,0) scale(1)} }
+@keyframes huskBloom { 0%,12%{opacity:0;transform:translate(-50%,22vh) scale(.3,.08)} 35%{opacity:.32;transform:translate(-50%,10vh) scale(.68,.32)} 68%{opacity:1;transform:translate(-50%,-1vh) scale(1.06,1.12)} 83%{transform:translate(-50%,1vh) scale(.98,.96)} 100%{opacity:1;transform:translate(-50%,0) scale(1)} }
+@keyframes stagOathstep { 0%,10%{opacity:0;transform:translate(calc(-50% + var(--entry-x)),1vh) scale(.74)} 34%{opacity:.28} 68%{opacity:1;transform:translate(-50%,0) scale(1.025)} 84%{transform:translate(-50%,0) scale(.99)} 100%{opacity:1;transform:translate(-50%,0) scale(1)} }
 @keyframes creatureBreathe { from{transform:scaleX(var(--reveal-mirror)) scale(1)} to{transform:scaleX(var(--reveal-mirror)) scale(1.018)} }
 @keyframes eliteEmerge { 0%{opacity:0;transform:translate(-50%,15vh) scale(.68)} 32%{opacity:.24} 66%{opacity:1;transform:translate(-50%,1vh) scale(.96)} 82%{transform:translate(-50%,-.5vh) scale(1.025)} 100%{opacity:1;transform:translate(-50%,0) scale(1)} }
 @keyframes bossAwaken { 0%,12%{opacity:0;transform:translate(-50%,3vh) scale(.84)} 35%{opacity:.42} 68%{opacity:1;transform:translate(-50%,0) scale(1)} 78%{opacity:1;transform:translate(-50%,0) scale(1.025)} 100%{opacity:1;transform:translate(-50%,0) scale(1)} }
@@ -625,7 +638,7 @@ button.echo-support:hover:not(:disabled) { border-color:#ae9aff;transform:transl
 @keyframes omenRing { 0%{opacity:0;transform:translate(-50%,-50%) scale(.25)} 35%{opacity:.72} 100%{opacity:0;transform:translate(-50%,-50%) scale(1.12)} }
 @keyframes sceneFigureOut { from{opacity:1;filter:none} to{opacity:.28;filter:blur(2px) brightness(1.45)} }
 @keyframes combatCardIn { from{opacity:.14;filter:blur(5px) brightness(1.5)} to{opacity:1;filter:none} }
-@media(max-width:620px){.reveal-creature{width:50vw;height:59vh}.encounter-reveal.count-3 .reveal-creature{width:40vw;height:55vh}.encounter-reveal.count-1 .reveal-creature{width:94vw;height:72vh}.reveal-copy{top:5vh}.reveal-copy p{display:none}.encounter-reveal.boss .reveal-copy{bottom:11vh}.card-forming{bottom:8vh}.skip-intro{bottom:12px}}
+@media(max-width:620px){.reveal-creature{width:50vw;height:59vh}.encounter-reveal.count-3 .reveal-creature{width:40vw;height:55vh}.encounter-reveal.count-1 .reveal-creature{width:94vw;height:72vh}.encounter-reveal.route-bramble-shortcut .reveal-creature{width:42vw;height:49vh}.encounter-reveal.route-deep-hunt .reveal-creature{width:39vw;height:53vh}.encounter-reveal.route-spore-nursery .reveal-creature{width:43vw;height:45vh}.encounter-reveal.route-root-guarded-passage .reveal-creature{width:38vw;height:63vh}.reveal-copy{top:5vh}.reveal-copy p{display:none}.encounter-reveal.boss .reveal-copy{bottom:11vh}.card-forming{bottom:8vh}.skip-intro{bottom:12px}}
 
 /* Four compact ability slots live inside each hero card. */
 .command-deck { display:block; }
