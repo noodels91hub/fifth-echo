@@ -1161,6 +1161,11 @@ button.echo-support:hover:not(:disabled) { border-color:#ae9aff;transform:transl
  .route-travel,.route-status { padding:8px 9px;font-size:8px; }
  .route-legend { left:16px;bottom:5px; }
 }
+@media(max-height:520px) and (pointer:coarse){
+ .route-map,.route-detail { -webkit-backdrop-filter:none;backdrop-filter:none; }
+ .hunter-stalk .fog-middle,.hunter-stalk .wolf-right { display:none; }
+ .hunter-stalk .ground-fog { filter:blur(10px);will-change:transform,opacity; }
+}
 @media(max-width:680px){
  .route-heading { right:12px; }
  .route-layout { grid-template-columns:1fr; }
