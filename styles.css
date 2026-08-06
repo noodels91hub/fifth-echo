@@ -19,7 +19,7 @@ body::before { content:""; position:fixed; inset:0; background:linear-gradient(1
 button { font:inherit;touch-action:manipulation; }
 .shell { width:min(1180px, calc(100% - 32px)); margin:auto; padding:28px 0 48px; }
 .topbar { display:flex; justify-content:space-between; align-items:center; margin-bottom:28px; gap:16px; }
-.brand { font:600 20px Cinzel,serif; letter-spacing:.17em; }
+.brand { flex:0 0 auto;font:600 20px Cinzel,serif;letter-spacing:.17em;white-space:nowrap; }
 .run-meta { display:flex;align-items:center;justify-content:flex-end;gap:12px; }
 .expedition-progress { display:grid;grid-template-columns:auto 54px auto;align-items:center;gap:6px;padding:5px 8px;border:1px solid rgba(228,182,111,.25);border-radius:8px;background:rgba(43,31,21,.34);color:var(--gold);font-size:8px;font-weight:800;letter-spacing:.05em;white-space:nowrap; }
 .expedition-progress b { font-size:9px; }
@@ -1076,6 +1076,12 @@ button.echo-support:hover:not(:disabled) { border-color:#ae9aff;transform:transl
 .route-screen.world-route-2 .route-map { border-color:rgba(226,130,77,.26);background:linear-gradient(180deg,rgba(25,11,7,.56),rgba(12,6,5,.76)); }
 .route-screen.world-route-2 .route-map::before { background:linear-gradient(90deg,transparent 49.7%,rgba(255,158,95,.05) 50%,transparent 50.3%),radial-gradient(circle at 50% 0,rgba(224,105,54,.09),transparent 58%); }
 .route-screen.world-route-2 .route-heading span { color:#f0a16f; }
+.route-screen.world-route-3 { background:#080611; }
+.route-screen.world-route-3::before { filter:saturate(.72) contrast(1.08) brightness(.76) hue-rotate(4deg); }
+.route-screen.world-route-3::after { background:radial-gradient(circle at 50% 43%,rgba(118,87,166,.16),transparent 39%),linear-gradient(90deg,rgba(6,4,12,.78),rgba(10,7,18,.24) 48%,rgba(5,3,11,.88)); }
+.route-screen.world-route-3 .route-map { border-color:rgba(171,138,214,.25);background:linear-gradient(180deg,rgba(18,13,29,.54),rgba(8,6,16,.78)); }
+.route-screen.world-route-3 .route-map::before { background:linear-gradient(90deg,transparent 49.7%,rgba(196,161,239,.055) 50%,transparent 50.3%),radial-gradient(circle at 50% 0,rgba(145,105,198,.1),transparent 58%); }
+.route-screen.world-route-3 .route-heading span { color:#c4a1e4; }
 .route-shade { position:absolute;z-index:-1;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(2,6,5,.5),rgba(2,7,5,.1) 22%,rgba(2,6,5,.42)); }
 .route-topbar { position:absolute;z-index:8;top:max(9px,env(safe-area-inset-top));left:max(16px,env(safe-area-inset-left));right:max(16px,env(safe-area-inset-right)); }
 .route-topbar .topbar { margin:0; }
@@ -1179,10 +1185,22 @@ button.echo-support:hover:not(:disabled) { border-color:#ae9aff;transform:transl
 .route-outcome p { color:#d0d2ce; }
 @keyframes routeNodePulse { 0%,100%{box-shadow:0 0 0 3px rgba(225,185,111,.07),0 0 16px rgba(225,185,111,.11),0 8px 20px rgba(0,0,0,.48)}50%{box-shadow:0 0 0 5px rgba(225,185,111,.11),0 0 25px rgba(225,185,111,.2),0 8px 20px rgba(0,0,0,.48)} }
 @media(max-width:920px), (max-height:520px){
+ .route-topbar .topbar { gap:6px; }
+ .route-topbar .brand { font-size:14px;letter-spacing:.11em; }
+ .route-topbar .run-meta { gap:5px; }
+ .route-topbar .test-nav { gap:3px;padding:3px 4px; }
+ .route-topbar .test-nav>span,.route-topbar .test-nav label small { display:none; }
+ .route-topbar .test-nav select[aria-label="Jump to fight"] { width:132px;min-width:0; }
+ .route-topbar .expedition-progress { grid-template-columns:auto 38px auto;gap:4px;padding:4px 6px; }
+ .route-topbar .xp-bar { width:38px; }
+ .route-topbar .shards { padding:4px 6px;font-size:7px; }
+ .route-topbar .lives { gap:4px;font-size:9px; }
+ .route-topbar .life { width:8px;height:8px; }
  .route-heading { top:39px;right:246px; }
  .route-heading p { display:none; }
- .route-heading h1 { font-size:17px; }
- .route-layout { inset:65px max(10px,env(safe-area-inset-right)) 22px max(10px,env(safe-area-inset-left));grid-template-columns:minmax(400px,1fr) 230px;gap:8px; }
+ .route-heading span { font-size:6px; }
+ .route-heading h1 { font-size:15px;line-height:1; }
+ .route-layout { inset:70px max(10px,env(safe-area-inset-right)) 22px max(10px,env(safe-area-inset-left));grid-template-columns:minmax(400px,1fr) 230px;gap:8px; }
  .route-map { border-radius:12px; }
  .route-lines { inset:12px 20px;width:calc(100% - 40px);height:calc(100% - 24px); }
  .route-node { width:36px;height:36px; }
