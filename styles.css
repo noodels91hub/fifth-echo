@@ -312,6 +312,7 @@ button.echo-support:hover:not(:disabled) { border-color:#ae9aff;transform:transl
 .enemy-status.weakened { border-color:rgba(182,139,232,.4);color:#d7b6ff;background:rgba(65,39,92,.46); }
 .enemy-status.exposed { border-color:rgba(241,186,95,.42);color:#ffd58b;background:rgba(104,65,25,.44); }
 .enemy-status.time { border-color:rgba(132,196,231,.44);color:#c9efff;background:rgba(30,74,103,.48);box-shadow:0 0 12px rgba(111,195,235,.12); }
+.enemy-status.heated { border-color:rgba(255,128,67,.48);color:#ffc18f;background:rgba(116,42,19,.52);box-shadow:0 0 13px rgba(255,83,30,.18); }
 .enemy-stage.count-1 .enemy-zone { display:flex;justify-content:center; }
 .enemy-stage.count-1 .enemy-card { width:min(45vw,600px);height:clamp(330px,50vh,570px);border-color:transparent;background:transparent;box-shadow:none; }
 .enemy-stage.count-1 .enemy-card.targeted { border-color:rgba(228,182,111,.45);background:linear-gradient(180deg,transparent 15%,rgba(8,10,13,.16));box-shadow:0 0 80px rgba(0,0,0,.16); }
@@ -615,9 +616,23 @@ button.echo-support:hover:not(:disabled) { border-color:#ae9aff;transform:transl
 .encounter-reveal.route-root-guarded-passage .reveal-fog { background:radial-gradient(ellipse at center,rgba(91,224,159,.24),rgba(36,103,74,.08) 48%,transparent 70%); }
 .encounter-reveal.route-spore-nursery .reveal-creature:nth-of-type(odd),.encounter-reveal.route-bramble-shortcut .reveal-creature:nth-of-type(odd) { transform-origin:center bottom; }
 
+/* World Two branches: sootwings dive, wraiths uncoil from incense, and the Furnace Knight marches through heat. */
+.encounter-reveal.route-sootwing-rooftops .reveal-creature { width:clamp(190px,23vw,360px);height:61vh;animation-name:harrierDive; }
+.encounter-reveal.route-censer-crypt .reveal-creature { width:clamp(210px,25vw,390px);height:67vh;animation-name:wraithCoil; }
+.encounter-reveal.route-furnace-gate .reveal-creature { width:clamp(390px,48vw,720px);height:85vh;animation-name:furnaceMarch; }
+.encounter-reveal.route-censer-crypt .reveal-fog { background:radial-gradient(ellipse at center,rgba(151,116,105,.34),rgba(78,55,50,.13) 48%,transparent 70%); }
+.encounter-reveal.route-furnace-gate .reveal-fog { background:radial-gradient(ellipse at center,rgba(255,102,40,.3),rgba(110,39,17,.11) 48%,transparent 70%); }
+.combat-screen.fx-overheat .enemy-strike { box-shadow:0 0 0 2px rgba(255,132,69,.54),0 0 42px rgba(255,73,22,.3),0 18px 48px rgba(0,0,0,.52); }
+.combat-screen.fx-smokeFeast .enemy-zone { filter:saturate(.72) brightness(.9); }
+.combat-screen.fx-vent .battlefield { animation:ventFlash .62s ease-out both; }
+
 /* The cinematic swaps into lightweight compositor-only cards for app/web parity. */
 
 @keyframes encounterCurtain { from{opacity:0} to{opacity:1} }
+@keyframes harrierDive { 0%{opacity:0;transform:translate(calc(-50% + var(--entry-x)),-18vh) scale(.62) rotate(-5deg)}28%{opacity:.64}72%,100%{opacity:1;transform:translate(-50%,0) scale(1) rotate(0)} }
+@keyframes wraithCoil { 0%{opacity:0;transform:translate(calc(-50% + var(--entry-x)),10vh) scale(.62);filter:blur(12px)}45%{opacity:.72;filter:blur(4px)}100%{opacity:1;transform:translate(-50%,0) scale(1);filter:blur(0)} }
+@keyframes furnaceMarch { 0%{opacity:0;transform:translate(-50%,10vh) scale(.78)}24%{opacity:.45}75%,100%{opacity:1;transform:translate(-50%,0) scale(1)} }
+@keyframes ventFlash { 0%{filter:none}35%{filter:brightness(1.2) sepia(.2)}100%{filter:none} }
 @keyframes cinematicPush { from{opacity:.15;transform:scale(1.03);background-position:50% 45%} 18%{opacity:1} to{opacity:1;transform:scale(1.115);background-position:50% 51%} }
 @keyframes creatureEmerge { 0%{opacity:0;transform:translate(calc(-50% + var(--entry-x)),7vh) scale(.72)} 20%{opacity:.08} 58%{opacity:.86;transform:translate(-50%,0) scale(.96)} 82%,100%{opacity:1;transform:translate(-50%,0) scale(1)} }
 @keyframes creeperUncoil { 0%,10%{opacity:0;transform:translate(calc(-50% + var(--entry-x)),18vh) scale(.28,.16) rotate(-8deg)} 32%{opacity:.38} 66%{opacity:1;transform:translate(-50%,1vh) scale(1.04,.94) rotate(1deg)} 82%{transform:translate(-50%,-1vh) scale(.98,1.03)} 100%{opacity:1;transform:translate(-50%,0) scale(1)} }
@@ -1029,10 +1044,16 @@ button.echo-support:hover:not(:disabled) { border-color:#ae9aff;transform:transl
  .combat-screen.boss .enemy-stage.count-1 .enemy-card { width:min(78vw,360px);height:auto;max-height:none;aspect-ratio:2/3; }
 }
 
-/* World 1 branching expedition map */
+/* Branching expedition maps */
 .route-screen { --route-scene:none;position:relative;height:100svh;min-height:340px;overflow:hidden;isolation:isolate;background:#050a08;color:var(--ink); }
 .route-screen::before { content:"";position:absolute;z-index:-3;inset:0;background:var(--route-scene) center/cover no-repeat;transform:scale(1.025);filter:saturate(.78) contrast(1.05);transition:background-image .45s ease; }
 .route-screen::after { content:"";position:absolute;z-index:-2;inset:0;pointer-events:none;background:radial-gradient(circle at 44% 44%,rgba(70,122,85,.14),transparent 38%),linear-gradient(90deg,rgba(3,7,6,.7),rgba(4,9,7,.22) 48%,rgba(3,6,6,.82)); }
+.route-screen.world-route-2 { background:#110805; }
+.route-screen.world-route-2::before { filter:saturate(.82) contrast(1.08) brightness(.82); }
+.route-screen.world-route-2::after { background:radial-gradient(circle at 48% 45%,rgba(211,100,49,.13),transparent 40%),linear-gradient(90deg,rgba(12,5,3,.76),rgba(17,7,4,.25) 48%,rgba(8,4,3,.86)); }
+.route-screen.world-route-2 .route-map { border-color:rgba(226,130,77,.26);background:linear-gradient(180deg,rgba(25,11,7,.56),rgba(12,6,5,.76)); }
+.route-screen.world-route-2 .route-map::before { background:linear-gradient(90deg,transparent 49.7%,rgba(255,158,95,.05) 50%,transparent 50.3%),radial-gradient(circle at 50% 0,rgba(224,105,54,.09),transparent 58%); }
+.route-screen.world-route-2 .route-heading span { color:#f0a16f; }
 .route-shade { position:absolute;z-index:-1;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(2,6,5,.5),rgba(2,7,5,.1) 22%,rgba(2,6,5,.42)); }
 .route-topbar { position:absolute;z-index:8;top:max(9px,env(safe-area-inset-top));left:max(16px,env(safe-area-inset-left));right:max(16px,env(safe-area-inset-right)); }
 .route-topbar .topbar { margin:0; }
@@ -1165,6 +1186,8 @@ button.echo-support:hover:not(:disabled) { border-color:#ae9aff;transform:transl
  .route-map,.route-detail { -webkit-backdrop-filter:none;backdrop-filter:none; }
  .hunter-stalk .fog-middle,.hunter-stalk .wolf-right { display:none; }
  .hunter-stalk .ground-fog { filter:blur(10px);will-change:transform,opacity; }
+ .ashen-life .ash-smoke,.ashen-life .swing-chain { display:none; }
+ .ashen-life .village-fire-glow,.ashen-life .courtyard-heat,.ashen-life .last-flame-pulse { filter:none;mix-blend-mode:normal;opacity:.3; }
 }
 @media(max-width:680px){
  .route-heading { right:12px; }
